@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="Space">
+        <meta name="description" content="O Pixeldoro é um timer customizado para utilização da Técnica Pomodoro, 
+        um método de estudos que visa a produtividade.">
+        <meta name="keywords" content="Pomodoro, Timer, Pixeldoro, Space">
+        <link rel="stylesheet" href="./css/styles.css"/>
+        <link rel="icon" href="./img/pomodoro.png">
+        <title>Pixeldoro</title>
+    </head>
+    
+    <body>
+        <audio id = "empty" src="./sounds/empty.mp3"></audio>
+        <audio id = "notification" src="./sounds/notification.wav"></audio>
+        
+        <div id = "blur">
+            <div class = "menu">
+                <div id="responsive-menu">
+                    <ul>
+                        <li>
+                            <a class = "responsive-buttons" id = "responsive-settings">
+                                <span class = "icons">⚙️</span>
+                                <span>Settings</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class = "responsive-buttons" id = "responsive-versiculo">
+                                <span class = "icons">📖</span>
+                                <span>Versículos</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class = "responsive-buttons" href="./about.html" target="_blank" rel="next">
+                                <span class = "icon-about">❗</span>
+                                <span>About</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class = "responsive-buttons" href="https://encurta.eu/thank-you" target="_blank" rel="next">
+                                <span class = "icons">❤️</span>
+                                <span>Ajude-nos</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class = "responsive-buttons" href="./privacy.html" target="_blank" rel="next">
+                                <span class = "icons">🕵</span>
+                                <span>Privacy</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class = "responsive-buttons" href="./terms.html" target="_blank" rel="next">
+                                <span class = "icon-terms">🤝</span>
+                                <span>Terms</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <hr>
+                <div class = "menu-bar">
+                    <h1>Pixeldoro</h1>
+                    <div id="responsive-bar">
+                        <hr id="hr1">
+                        <hr id="hr2">
+                        <hr id="hr3">
+                    </div>
+                    <div class = "menu-buttons">
+                        <button id = "button-settings">⚙️</button>
+                        <button id = "button-bible">📖</button>
+                        <a href="https://encurta.eu/thank-you" target="_blank" class = "buttons">❤️</a>
+                        <a href="./privacy.html" target="_blank" rel="next" class = "buttons">🕵</a>
+                        <a href="./about.html" rel="next" target="_blank" class = "buttons">❗</a>
+                        <a href="./terms.html" target="_blank" rel="next" class = "buttons">🤝</a>
+                    </div>
+                </div>
+                <hr>
+            </div>
+            
+            <div class = "container">
+                <p>
+                    <button id = "button-pomodoro">Pomodoro</button>
+                    <button id = "button-short-break">Short break</button>
+                    <button id = "button-long-break">Long break</button>
+                </p>
+                
+                <div class="timer">
+                    <span id = "minutes">25</span>
+                    <a>:</a>
+                    <span id = "seconds">00</span>
+                </div>
+                
+                <p>
+                    <button id = "button-start">Start</button>
+                    <button id = "button-stop">Stop</button>
+                </p>
+            </div>
+            
+            <div class = "title-tasks">
+                <hr>
+                    <h3>To-do list</h3>
+                <hr>
+            </div>
+            
+            <div class = "tasks">
+                <div class = "add-tasks">
+                    <input type="text" id = "input-new-task" placeholder="Add new task">
+                    <button id = "button-new-task">➕</button>
+
+                    <div class = "counter">
+                        <a>Complete: </a>
+                        <a id = "complete-tasks">0</a>
+                    </div>
+                </div>
+                
+                <ul id = "to-do-list">
+                    <li>
+                        <script type="text/javascript">
+                            atOptions = {
+                                'key' : 'e7b951e2355f8e30308df68f221605db',
+                                'format' : 'iframe',
+                                'height' : 50,
+                                'width' : 320,
+                                'params' : {}
+                            };
+                            document.write('<scr' + 'ipt type="text/javascript" src="http' + (location.protocol === 'https:' ? 's' : '') + '://www.effectivedisplayformats.com/e7b951e2355f8e30308df68f221605db/invoke.js"></scr' + 'ipt>');
+                        </script>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+        
+        <div class="pop-up" id = "pop-up">
+            <hr>
+            <span class = "bar">
+                <h2>Settings</h2>
+                <button class = "button-close" id = "button-close">❌</button>
+            </span>
+            <hr>
+
+            <div id = "input-time">
+                Pomodoro
+                <p>
+                    <input type="number" min="1" max="59" id = "pomodoro-time">
+                </p>
+                Short break
+                <p>
+                    <input type="number" min="1" max="59" id = "short-break-time">
+                </p>
+                Long break
+                <p>
+                    <input type="number" min="1" max="59" id = "long-break-time">
+                </p>
+            </div>
+            Music
+            <p>
+                <audio controls id = "lo-fi">
+                    <source src="./sounds/lo-fi.mp3" type="audio/mpeg">
+                </audio>
+            </p>
+        </div>
+
+        <div class = "pop-up" id = "versiculo">
+            <hr>
+            <span class = "bar">
+                <h2>Versículo</h2>
+                <button class = "button-close" id = "button-close-2">❌</button>
+            </span>
+            <hr>
+
+            <p id="area-versiculo-1"></p>
+            <p id="area-versiculo-2"></p>
+        </div>
+
+        <script src="./js/timer.js"></script>
+        <script src="./js/tasks.js"></script>
+        <script src="./js/versiculo.js"></script>
+        <script src="./js/responsive.js"></script>
+    </body>
+</html>
+    
