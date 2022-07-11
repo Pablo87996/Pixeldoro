@@ -10,15 +10,15 @@ var randomNumber = 0;
 buttonBible.onclick = function() {
     blur.classList.toggle('active');
     versiculo.classList.toggle('active');
-    randomNumber = Math.floor(Math.random() * 5);
-    randomVersiculo();
+    //randomNumber = Math.floor(Math.random() * 5);
+    //randomVersiculo();
 }
 
 responsiveVersiculo.onclick = function() {
     blur.classList.toggle('active');
     versiculo.classList.toggle('active');
-    randomNumber = Math.floor(Math.random() * 5);
-    randomVersiculo();
+    //randomNumber = Math.floor(Math.random() * 5);
+    //randomVersiculo();
 }
 
 buttonClose2.onclick = function() {
@@ -26,7 +26,7 @@ buttonClose2.onclick = function() {
     versiculo.classList.toggle('active');
 }
 
-function randomVersiculo() {
+/*function randomVersiculo() {
     if(randomNumber == 0) {
         areaVersiculo1.innerHTML = "O temor do Senhor é o princípio do saber, mas os loucos desprezam a sabedoria e o ensino.";
         areaVersiculo2.innerHTML = "Provérbios 1:7";
@@ -43,4 +43,18 @@ function randomVersiculo() {
         areaVersiculo1.innerHTML = "Mas a vereda dos justos é como a luz da aurora, que vai brilhando mais e mais até ser dia perfeito.";
         areaVersiculo2.innerHTML = "Provérbios 4:18";
     }
-}
+}*/
+
+fetch('https://www.abibliadigital.com.br/api/verses/nvi/:abbrev/random')
+    .then(response => {
+        return response.json();
+    })
+    .then(random => {
+        texto = random.text;
+        nome = random.book.name;
+        capitulo = random.chapter;
+        verso = random.number;
+
+        areaVersiculo1.innerHTML = texto;
+        areaVersiculo2.innerHTML = `${nome} ${capitulo}:${verso}`;
+    })
