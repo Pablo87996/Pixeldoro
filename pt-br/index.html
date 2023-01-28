@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,11 +7,11 @@
         <meta name="description" content="O Pixeldoro é um timer customizado para utilização da Técnica Pomodoro, 
         um método de estudos que visa a produtividade.">
         <meta name="keywords" content="Pomodoro, Timer, Pixeldoro, Space">
-        <meta http-equiv="content-language" content="en">
-        <link rel="stylesheet" href="./css/styles.css"/>
+        <meta http-equiv="content-language" content="pt-br">
+        <link rel="stylesheet" href="../css/styles.css"/>
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link type="text/css" rel="stylesheet" href="./css/materialize.min.css"  media="screen,projection"/>
-        <link rel="icon" href="./img/pomodoro.png">
+        <link type="text/css" rel="stylesheet" href="../css/materialize.min.css"  media="screen,projection"/>
+        <link rel="icon" href="../img/pomodoro.png">
         <title>Pixeldoro | Pomodoro Timer</title>
 
         <!-- Google tag (gtag.js) -->
@@ -26,28 +26,28 @@
     </head>
     
     <body>
-        <audio id = "empty" src="./sounds/empty.mp3"></audio>
-        <audio id = "notification" src="./sounds/notification.wav"></audio>
+        <audio id = "empty" src="../sounds/empty.mp3"></audio>
+        <audio id = "notification" src="../sounds/notification.wav"></audio>
         
         <div id = "blur">
             <header>
                 <hr>
                 <!-- Dropdown Structure -->
                 <ul id="dropdown1" class="dropdown-content">
-                    <li><span class="pt-br"><img src="./img/pt-br.png" alt="pt-br">pt-BR</span></li>
-                    <li><span class="en"><img src="./img/en.png" alt="en">en</span></li>
+                    <li><span class="pt-br"><img src="../img/pt-br.png" alt="pt-br">pt-BR</span></li>
+                    <li><span class="en"><img src="../img/en.png" alt="en">en</span></li>
                 </ul>
 
                 <nav>
                     <div class="nav-wrapper">
                         <ul id="nav-mobile" class="right hide-on-med-and-down">
-                            <li><a href="./about.html" target="_blank">About</a></li>
-                            <li><a id="versiculo">Verses</a></li>
-                            <li><a id="settings">Settings</a></li>
-                            <li><a href="https://www.highcpmrevenuenetwork.com/i620y7rg1?key=23bc4f9a7e8e28270ad1136a9877e4bc" target="_blank">Support Me</a></li>
+                            <li><a href="./sobre.html" target="_blank">Sobre</a></li>
+                            <li><a id="versiculo">Versículos</a></li>
+                            <li><a id="settings">Configurações</a></li>
+                            <li><a href="https://www.highcpmrevenuenetwork.com/i620y7rg1?key=23bc4f9a7e8e28270ad1136a9877e4bc" target="_blank">Ajude-nos</a></li>
 
                             <!-- Dropdown Trigger -->
-                            <li><a class="dropdown-trigger" href="#!" data-target="dropdown1"><img src="./img/en.png" alt="pt-br" height="32px" width="32px">en<i class="material-icons right">arrow_drop_down</i></a></li>
+                            <li><a class="dropdown-trigger" href="#!" data-target="dropdown1"><img src="../img/pt-br.png" alt="pt-br" height="32px" width="32px">pt-BR<i class="material-icons right">arrow_drop_down</i></a></li>
                         </ul>
                         <div class="responsive-nav">
                             <a href="#" class="brand-logo">Pixeldoro</a>
@@ -59,10 +59,10 @@
                 <hr>
 
                 <ul id="slide-out" class="sidenav">
-                    <li><a id="responsive-settings"><i class="material-icons">settings</i>Settings</a></li>
-                    <li><a id="responsive-versiculo"><i class="material-icons">book</i>Verses</a></li>
-                    <li><a href="./about.html" target="_blank"><i class="material-icons">announcement</i>About</a></li>
-                    <li><a href="https://www.highcpmrevenuenetwork.com/i620y7rg1?key=23bc4f9a7e8e28270ad1136a9877e4bc" target="_blank"><i class="material-icons">favorite</i>Support me</a></li>
+                    <li><a id="responsive-settings"><i class="material-icons">settings</i>Configurações</a></li>
+                    <li><a id="responsive-versiculo"><i class="material-icons">book</i>Versículos</a></li>
+                    <li><a href="./sobre.html" target="_blank"><i class="material-icons">announcement</i>Sobre</a></li>
+                    <li><a href="https://www.highcpmrevenuenetwork.com/i620y7rg1?key=23bc4f9a7e8e28270ad1136a9877e4bc" target="_blank"><i class="material-icons">favorite</i>Ajude-nos</a></li>
                 </ul>
             </header>
             
@@ -70,8 +70,8 @@
                 <div class = "timer-container">
                     <p>
                         <button id = "button-pomodoro">Pomodoro</button>
-                        <button id = "button-short-break">Short break</button>
-                        <button id = "button-long-break">Long break</button>
+                        <button id = "button-short-break">Pausa curta</button>
+                        <button id = "button-long-break">Pausa longa</button>
                     </p>
                     
                     <div class="timer">
@@ -81,20 +81,20 @@
                     </div>
                     
                     <p>
-                        <button id = "button-start">Start</button>
-                        <button id = "button-stop">Stop</button>
+                        <button id = "button-start">Começar</button>
+                        <button id = "button-stop">Pausar</button>
                     </p>
                 </div>
                 
                 <div class = "title-tasks">
                     <hr>
-                        <h5>To-do list</h5>
+                        <h5>Lista de tarefas</h5>
                     <hr>
                 </div>
                 
                 <div class = "tasks">
                     <div>
-                        <input type="" id = "input-new-task" placeholder="Add new task">
+                        <input type="" id = "input-new-task" placeholder="Adicionar nova tarefa">
                         <ul id = "to-do-list">
                             <li>
                                 <script type="text/javascript">
@@ -112,7 +112,7 @@
                     </div>
                     <button id = "button-new-task">➕</button>
                     <div class = "counter">
-                        <span>Completed: </span>
+                        <span>Completas: </span>
                         <span id = "completed-tasks">0</span>
                     </div>
 
@@ -139,13 +139,13 @@
                     <div class="col l4 s12">
                       <h5 class="white-text">Space</h5>
                       <p class="grey-text text-lighten-4">
-                        The Space is an enterprise of technologies responsible for the development of
-                        projects that support students of all the world.
+                        A Space é uma empresa do ramo tecnológico responsável pelo desenvolvimento
+                        de projetos que auxiliem estudantes de todo o mundo.
                       </p>
                     </div>
           
                     <div class="col l3 offset-l1 s12">
-                      <h5 class="white-text">Projects</h5>
+                      <h5 class="white-text">Projetos</h5>
                       <ul>
                         <li><a class="grey-text text-lighten-3" href="#">Pixeldoro</a></li>
                         <li><a class="grey-text text-lighten-3" href="https://space-math.blogspot.com" target="_blank">Space Math</a></li>
@@ -154,7 +154,7 @@
                     </div>
           
                     <div class="col l3 offset-l1 s12">
-                      <h5>contacts</h5>
+                      <h5>Contatos</h5>
                       <ul class="contacts">
                         <li><a class="grey-text text-lighten-3" href="https://www.instagram.com/space_01_official/" target="_blank">
                           <ion-icon name="logo-instagram"></ion-icon> @space_01_official
@@ -170,8 +170,8 @@
                 <div class="footer-copyright">
                   <div class="container">
                     © 2021 Pixeldoro
-                    <a class="grey-text text-lighten-4 right" href="./privacy.html" target="_blank">Privacy Policy</a>
-                    <a class="grey-text text-lighten-4 right" href="./terms.html" target="_blank">Terms and Conditions</a>
+                    <a class="grey-text text-lighten-4 right" href="./privacidade.html" target="_blank">Política de Privacidade</a>
+                    <a class="grey-text text-lighten-4 right" href="./termos.html" target="_blank">Termos e Condições</a>
                   </div>
                 </div>
             </footer>
@@ -180,7 +180,7 @@
         <div class="pop-up" id = "pop-up">
             <hr>
             <span class = "bar">
-                <h5>Settings</h5>
+                <h5>Configurações</h5>
                 <button class = "button-close" id = "button-close">❌</button>
             </span>
             <hr>
@@ -190,29 +190,28 @@
                 <p>
                     <input type="number" min="1" max="59" id = "pomodoro-time">
                 </p>
-                Short break
+                Pausa curta
                 <p>
                     <input type="number" min="1" max="59" id = "short-break-time">
                 </p>
-                Long break
+                Pausa Longa
                 <p>
                     <input type="number" min="1" max="59" id = "long-break-time">
                 </p>
             </div>
-            Music
+            Música
             <p>
                 <audio controls id = "lo-fi">
-                    <source src="./sounds/lo-fi.mp3" type="audio/mpeg">
+                    <source src="../sounds/lo-fi.mp3" type="audio/mpeg">
                 </audio>
             </p>
-            
-            Language
+            Idioma
             <p>
                 <ul id="dropdown2" class="dropdown-content">
-                    <li><span class="pt-br"><img src="./img/pt-br.png" alt="pt-br">pt-BR</span></li>
-                    <li><span class="en"><img src="./img/en.png" alt="en">en</span></li>
+                    <li><span class="pt-br"><img src="../img/pt-br.png" alt="pt-br">pt-BR</span></li>
+                    <li><span class="en"><img src="../img/en.png" alt="en">en</span></li>
                 </ul>
-                <a class="btn dropdown-trigger language-settings" href="#!" data-target="dropdown2">English<i class="material-icons right">arrow_drop_down</i></a>
+                <a class="btn dropdown-trigger language-settings" href="#!" data-target="dropdown2">Português - Brasil<i class="material-icons right">arrow_drop_down</i></a>
             </p>
         </div>
 
@@ -228,12 +227,12 @@
             <p id="area-versiculo-2"></p>
         </div>
 
-        <script src="./js/timer.js"></script>
-        <script src="./js/tasks.js"></script>
-        <script src="./js/versiculo.js"></script>
-        <script src="./js/responsive.js"></script>
-        <script src="./js/language.js"></script>
-        <script src="./js/materialize.min.js"></script>
+        <script src="../js/timer.js"></script>
+        <script src="../js/tasks.js"></script>
+        <script src="../js/versiculo.js"></script>
+        <script src="../js/responsive.js"></script>
+        <script src="../js/language.js"></script>
+        <script src="../js/materialize.min.js"></script>
         <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     </body>

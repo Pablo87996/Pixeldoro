@@ -1,18 +1,18 @@
 var inputNewTask = document.getElementById("input-new-task");
 var buttonNewTask = document.getElementById("button-new-task");
 var toDoList = document.getElementById("to-do-list");
-var displayCompleteTasks = document.getElementById("complete-tasks")
-var completeTasks = 0;
+var displayCompletedTasks = document.getElementById("completed-tasks")
+var completedTasks = 0;
 var tasksOn = 0;
 var nameList = [];
 var idList = [];
 
-if(localStorage.getItem("completeTasks") == null){
-    localStorage.setItem("completeTasks", 0);
+if(localStorage.getItem("completedTasks") == null){
+    localStorage.setItem("completedTasks", 0);
 }else{
-    completeTasks = localStorage.getItem("completeTasks");
-    console.log(completeTasks);
-    displayCompleteTasks.innerHTML = completeTasks;
+    completedTasks = localStorage.getItem("completedTasks");
+    console.log(completedTasks);
+    displayCompletedTasks.innerHTML = completedTasks;
 }
 
 //Verificação de tarefas (tasks) ativas:
@@ -136,9 +136,9 @@ function createTagLI(task) {
     buttonCheck.onclick = function(){
         removeTask(task);
 
-        completeTasks++;
-        localStorage.setItem("completeTasks", completeTasks);
-        displayCompleteTasks.innerHTML = completeTasks;
+        completedTasks++;
+        localStorage.setItem("completedTasks", completedTasks);
+        displayCompletedTasks.innerHTML = completedTasks;
     }
 
     div.appendChild(buttonDelete);

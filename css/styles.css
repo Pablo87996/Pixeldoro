@@ -33,6 +33,27 @@ header nav{
     box-shadow: none;
 }
 
+.dropdown-trigger {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+.dropdown-content span{
+    display: flex !important;
+    align-items: center;
+    gap: 10px;
+}
+
+.en {
+    color: #02649E !important;
+}
+
+.pt-br {
+    color: #38B000 !important;
+}
+
 .timer-container {
     width: 60%;
     margin: auto;
@@ -86,6 +107,18 @@ header nav{
     visibility: visible;
     opacity: 1;
     top: 50%;
+}
+
+.language-settings {
+    background-color: #43aa8b !important;
+    border: 2px solid black !important;
+    box-shadow: none !important;
+    width: 50%;
+    padding: 10px;
+    margin-right: 11px;
+
+    display: flex !important;
+    justify-content: space-between;
 }
 
 .subpage {
@@ -367,6 +400,10 @@ hr {
 
     #input-time input{
         width: 92%;
+    }
+
+    .language-settings {
+        width: 100%;
     }
 
     #lo-fi{

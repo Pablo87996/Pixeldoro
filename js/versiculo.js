@@ -25,16 +25,29 @@ responsiveVersiculo.onclick = function() {
     blur.classList.toggle('active');
 }
 
-fetch('https://www.abibliadigital.com.br/api/verses/nvi/:abbrev/random')
-    .then(response => {
-        return response.json();
-    })
-    .then(random => {
-        texto = random.text;
-        nome = random.book.name;
-        capitulo = random.chapter;
-        verso = random.number;
+if(localStorage.getItem('language') == null){
+    localStorage.setItem('language', 'en');
+}else{
+    let language = localStorage.getItem('language');
+    let version;
+    
+    if(language == 'en'){
+        version = 'bbe';
+    }else{
+        version = 'nvi';
+    }
 
-        areaVersiculo1.innerHTML = texto;
-        areaVersiculo2.innerHTML = `${nome} ${capitulo}:${verso}`;
-    })
+    fetch(`https://www.abibliadigital.com.br/api/verses/${version}/:abbrev/random`)
+        .then(response => {
+            return response.json();
+        })
+        .then(random => {
+            texto = random.text;
+            nome = random.book.name;
+            capitulo = random.chapter;
+            verso = random.number;
+    
+            areaVersiculo1.innerHTML = texto;
+            areaVersiculo2.innerHTML = `${nome} ${capitulo}:${verso}`;
+        })
+}

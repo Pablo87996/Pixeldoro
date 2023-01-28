@@ -1,8 +1,3 @@
-// var responsiveBar = document.getElementById('responsive-bar');
-// var responsiveMenu = document.getElementById('responsive-menu');
-// var hr1 = document.getElementById('hr1');
-// var hr2 = document.getElementById('hr2');
-// var hr3 = document.getElementById('hr3');
 const responsiveSettings = document.getElementById('responsive-settings');
 const settings = document.getElementById('settings');
 var blur = document.getElementById('blur');
@@ -10,16 +5,11 @@ var popUp = document.getElementById('pop-up');
 
 document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.sidenav');
-    var instances = M.Sidenav.init(elems);
-});
+    M.Sidenav.init(elems);
 
-// responsiveBar.onclick = function(){
-//     responsiveBar.classList.toggle('active');
-//     responsiveMenu.classList.toggle('active');
-//     hr1.classList.toggle('active');
-//     hr2.classList.toggle('active');
-//     hr3.classList.toggle('active');
-// }
+    const dropdown = document.querySelectorAll('.dropdown-trigger');
+    M.Dropdown.init(dropdown);
+});
 
 function closeNav(){
     var elem = document.querySelector('.sidenav');
