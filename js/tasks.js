@@ -1,6 +1,7 @@
 var inputNewTask = document.getElementById("input-new-task");
 var buttonNewTask = document.getElementById("button-new-task");
 var toDoList = document.getElementById("to-do-list");
+const toDoListPortrait = document.getElementById("to-do-list-portrait");
 var displayCompletedTasks = document.getElementById("completed-tasks")
 var completedTasks = 0;
 var tasksOn = 0;
@@ -17,7 +18,7 @@ if(localStorage.getItem("completedTasks") == null){
 
 //Verificação de tarefas (tasks) ativas:
 //Caso não haja tarefas ativas, é criada uma chave para guardar o número de tarefas;
-//Se houver alguma tarefa em aberto, elas são resgatadas no Banco de Dados.
+//Se houver alguma tarefa em aberto, elas são resgatadas no Local Storage.
 if(localStorage.getItem("tasksOn") == null || localStorage.getItem("tasksOn") == 0){
     localStorage.setItem("tasksOn", 0);
     localStorage.setItem("nameList", []);
@@ -34,7 +35,8 @@ if(localStorage.getItem("tasksOn") == null || localStorage.getItem("tasksOn") ==
             id: idList[i]
         };
 
-        createTagLI(task);
+        createTagLI(task, toDoList);
+        createTagLI(task, toDoListPortrait);
     }
 }
 
@@ -44,7 +46,12 @@ inputNewTask.addEventListener('keypress', (e) => {
             name: inputNewTask.value,
             id: generateId(),
         }
-        addTask(task);
+        addTask(task, toDoList);
+        addTask(task, toDoListPortrait);
+
+        inputNewTask.value = '';
+        tasksOn++;
+        localStorage.setItem("tasksOn", tasksOn);
         
         if(tasksOn <= 10){
             nameList.push(task.name);
@@ -61,7 +68,12 @@ buttonNewTask.addEventListener('click', (e) => {
         name: inputNewTask.value,
         id: generateId(),
     }
-    addTask(task);
+    addTask(task, toDoList);
+    addTask(task, toDoListPortrait);
+
+    inputNewTask.value = '';
+    tasksOn++;
+    localStorage.setItem("tasksOn", tasksOn);
 
     nameList.push(task.name);
     idList.push(task.id);
@@ -70,20 +82,19 @@ buttonNewTask.addEventListener('click', (e) => {
 });
 
 function generateId() {
-    
     return Math.floor(Math.random() * 3000);
 }
 
-function addTask(task) {
+function addTask(task, ul) {
     if(inputNewTask.value == '') {
         alert('Escreva alguma coisa, por favor!');
     } else {
         if(tasksOn <10) {
-            var li = createTagLI(task);
-            toDoList.appendChild(li);
-            inputNewTask.value = '';
-            tasksOn++;
-            localStorage.setItem("tasksOn", tasksOn);
+            var li = createTagLI(task, ul);
+            ul.appendChild(li);
+            // inputNewTask.value = '';
+            // tasksOn++;
+            // localStorage.setItem("tasksOn", tasksOn);
         } else {
             alert('Esse é o limite de tarefas.');
             tasksOn = "Max";
@@ -91,10 +102,10 @@ function addTask(task) {
     }
 }
 
-function removeTask(task){
+function removeTask(task, ul){
     var li = document.getElementById(''+task.id+'');
     if(li) {
-        toDoList.removeChild(li);
+        ul.removeChild(li);
         let index = idList.indexOf(task.id);
         idList.splice(index, 1);
         nameList.splice(index, 1);
@@ -110,7 +121,7 @@ function removeTask(task){
     localStorage.setItem("tasksOn", tasksOn);
 }
 
-function createTagLI(task) {
+function createTagLI(task, ul) {
     var li = document.createElement('li');
     li.id = task.id;
 
@@ -126,7 +137,7 @@ function createTagLI(task) {
     buttonDelete.onclick = function(){
         var confirmacao = window.confirm('A tarefa será deletada!')
         if(confirmacao) {
-            removeTask(task);
+            removeTask(task, ul);
         }
     }
 
@@ -134,7 +145,8 @@ function createTagLI(task) {
     buttonCheck.classList.add('button-action');
     buttonCheck.innerHTML = '✔️';
     buttonCheck.onclick = function(){
-        removeTask(task);
+        removeTask(task, ul);
+        removeTask(task, ul);
 
         completedTasks++;
         localStorage.setItem("completedTasks", completedTasks);
@@ -147,6 +159,6 @@ function createTagLI(task) {
     li.appendChild(span);
     li.appendChild(div);
 
-    toDoList.appendChild(li);
+    ul.appendChild(li);
     return li;
 }
