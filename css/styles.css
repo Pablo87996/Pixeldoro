@@ -446,7 +446,6 @@ hr {
 .tasks {
     margin-top: 2%;
     position: relative;
-    min-height: 100vh;
 
     display: grid;
     grid-template-columns: 8fr 1fr 8fr;
@@ -487,12 +486,16 @@ hr {
     margin: 0 5px 0 5px;
 }
 
-#to-do-list {
+#to-do-list-container {
     padding: 0;
     padding-bottom: 30px;
+
+    display: grid;
+    grid-template-columns: 8fr 9fr;
+    min-height: 100vh;
 }
 
-#to-do-list li, #to-do-list-portrait li{
+#to-do-list li {
     background-color: #90be6d;
     width: 100%;
     padding: 10px;
@@ -505,27 +508,14 @@ hr {
     align-items: center;
 }
 
-#to-do-list-portrait{
-    display: none;
-}
-
 @media (max-width: 480px){
-    #to-do-list-portrait{
-        display: flex;
-        flex-direction: column;
-    }
-
-    #to-do-list{
-        display: none;
+    #to-do-list-container{
+        grid-template-columns: 1fr;
     }
 
     #anuncio{
         width: auto;
     }
-}
-
-#to-do-list div{
-    display: flex;
 }
 
 .button-action {

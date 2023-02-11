@@ -1,7 +1,6 @@
 var inputNewTask = document.getElementById("input-new-task");
 var buttonNewTask = document.getElementById("button-new-task");
 var toDoList = document.getElementById("to-do-list");
-const toDoListPortrait = document.getElementById("to-do-list-portrait");
 var displayCompletedTasks = document.getElementById("completed-tasks")
 var completedTasks = 0;
 var tasksOn = 0;
@@ -36,7 +35,6 @@ if(localStorage.getItem("tasksOn") == null || localStorage.getItem("tasksOn") ==
         };
 
         createTagLI(task, toDoList);
-        createTagLI(task, toDoListPortrait);
     }
 }
 
@@ -47,7 +45,6 @@ inputNewTask.addEventListener('keypress', (e) => {
             id: generateId(),
         }
         addTask(task, toDoList);
-        addTask(task, toDoListPortrait);
 
         inputNewTask.value = '';
         tasksOn++;
@@ -69,7 +66,6 @@ buttonNewTask.addEventListener('click', (e) => {
         id: generateId(),
     }
     addTask(task, toDoList);
-    addTask(task, toDoListPortrait);
 
     inputNewTask.value = '';
     tasksOn++;
@@ -92,9 +88,6 @@ function addTask(task, ul) {
         if(tasksOn <10) {
             var li = createTagLI(task, ul);
             ul.appendChild(li);
-            // inputNewTask.value = '';
-            // tasksOn++;
-            // localStorage.setItem("tasksOn", tasksOn);
         } else {
             alert('Esse é o limite de tarefas.');
             tasksOn = "Max";
@@ -137,7 +130,7 @@ function createTagLI(task, ul) {
     buttonDelete.onclick = function(){
         var confirmacao = window.confirm('A tarefa será deletada!')
         if(confirmacao) {
-            removeTask(task, ul);
+            removeTask(task, toDoList);
         }
     }
 
@@ -145,8 +138,7 @@ function createTagLI(task, ul) {
     buttonCheck.classList.add('button-action');
     buttonCheck.innerHTML = '✔️';
     buttonCheck.onclick = function(){
-        removeTask(task, ul);
-        removeTask(task, ul);
+        removeTask(task, toDoList);
 
         completedTasks++;
         localStorage.setItem("completedTasks", completedTasks);

@@ -94,24 +94,7 @@
                 </div>
                 
                 <div class = "tasks">
-                    <div>
-                        <input type="" id = "input-new-task" placeholder="Add new task">
-
-                        <ul id = "to-do-list">
-                            <li>
-                                <script type="text/javascript">
-                                    atOptions = {
-                                        'key' : 'e7b951e2355f8e30308df68f221605db',
-                                        'format' : 'iframe',
-                                        'height' : 50,
-                                        'width' : 320,
-                                        'params' : {}
-                                    };
-                                    document.write('<scr' + 'ipt type="text/javascript" src="http' + (location.protocol === 'https:' ? 's' : '') + '://www.effectivedisplayformats.com/e7b951e2355f8e30308df68f221605db/invoke.js"></scr' + 'ipt>');
-                                </script>
-                            </li>
-                        </ul>
-                    </div>
+                    <input type="" id = "input-new-task" placeholder="Add new task">
 
                     <button id = "button-new-task">➕</button>
 
@@ -120,8 +103,25 @@
                         <span id = "completed-tasks">0</span>
                     </div>
                 </div>
+
+                <div id="to-do-list-container">
+                    <ul id = "to-do-list">
+                        <li>
+                            <script type="text/javascript">
+                                atOptions = {
+                                    'key' : 'e7b951e2355f8e30308df68f221605db',
+                                    'format' : 'iframe',
+                                    'height' : 50,
+                                    'width' : 320,
+                                    'params' : {}
+                                };
+                                document.write('<scr' + 'ipt type="text/javascript" src="http' + (location.protocol === 'https:' ? 's' : '') + '://www.effectivedisplayformats.com/e7b951e2355f8e30308df68f221605db/invoke.js"></scr' + 'ipt>');
+                            </script>
+                        </li>
+                    </ul>
+                </div>
                 
-                <ul id = "to-do-list-portrait">
+                <!-- <ul id = "to-do-list-portrait">
                     <li>
                         <script type="text/javascript">
                             atOptions = {
@@ -134,7 +134,7 @@
                             document.write('<scr' + 'ipt type="text/javascript" src="http' + (location.protocol === 'https:' ? 's' : '') + '://www.effectivedisplayformats.com/e7b951e2355f8e30308df68f221605db/invoke.js"></scr' + 'ipt>');
                         </script>
                     </li>
-                </ul>
+                </ul> -->
             </main>
 
             <footer class="page-footer">
