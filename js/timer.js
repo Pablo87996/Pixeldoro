@@ -63,20 +63,32 @@ settings.onclick = function () {
     let tmpTimes = [pomodoroTime.value, shortBreakTime.value, longBreakTime.value];
 
     buttonClose.onclick = function () {
-        if (pomodoroTime.value > 0 && shortBreakTime.value > 0 && longBreakTime.value > 0 && pomodoroTime.value < 60 && shortBreakTime.value < 60 && longBreakTime.value < 60) {
-            if (tmpTimes[0] != pomodoroTime.value || tmpTimes[1] != shortBreakTime.value || tmpTimes[2] != longBreakTime.value) {
-                if (!confirmSwitchMode(0)) {
-                    pomodoroTime.value = tmpTimes[0];
-                    shortBreakTime.value = tmpTimes[1];
-                    longBreakTime.value = tmpTimes[2];
-                    tmpTimes = null;
-                }
-            }
+        // let isInteger = Number.isInteger(parseInt(pomodoroTime.value)) && Number.isInteger(parseInt(shortBreakTime.value)) && Number.isInteger(parseInt(longBreakTime.value));
+        // let isInteger = pomodoroTime.value % 1 === 0 && shortBreakTime.value % 1 === 0 && longBreakTime.value % 1 === 0;
+        let isPositive = pomodoroTime.value > 0 && shortBreakTime.value > 0 && longBreakTime.value > 0;
+        let isLessThanSixty = pomodoroTime.value < 60 && shortBreakTime.value < 60 && longBreakTime.value < 60;
+        let isInteger = pomodoroTime.value % 1 === 0 && shortBreakTime.value % 1 === 0 && longBreakTime.value % 1 === 0;
 
-            blur.classList.toggle('active');
-            popUp.classList.toggle('active');
+        if (isInteger) {
+            timesToInt();
+
+            if (isPositive && isLessThanSixty) {
+                if (tmpTimes[0] != pomodoroTime.value || tmpTimes[1] != shortBreakTime.value || tmpTimes[2] != longBreakTime.value) {
+                    if (!confirmSwitchMode(0)) {
+                        pomodoroTime.value = tmpTimes[0];
+                        shortBreakTime.value = tmpTimes[1];
+                        longBreakTime.value = tmpTimes[2];
+                        tmpTimes = null;
+                    }
+                }
+
+                blur.classList.toggle('active');
+                popUp.classList.toggle('active');
+            } else {
+                alert("The values must be less than or equal to 59.");
+            }
         } else {
-            alert("Value must be less than or equal to 59.");
+            alert("The values must be integers.");
         }
     }
 }
@@ -89,7 +101,7 @@ pomodoroTime.addEventListener('keypress', (e) => {
                 buttonClose.onclick();
             }
         } else {
-            alert("Value must be less than or equal to 59.");
+            alert("The values must be less than or equal to 59.");
         }
     }
 });
@@ -101,7 +113,7 @@ shortBreakTime.addEventListener('keypress', (e) => {
                 buttonClose.onclick();
             }
         } else {
-            alert("Value must be less than or equal to 59.");
+            alert("The values must be less than or equal to 59.");
         }
     }
 });
@@ -113,7 +125,7 @@ longBreakTime.addEventListener('keypress', (e) => {
                 buttonClose.onclick();
             }
         } else {
-            alert("Value must be less than or equal to 59.");
+            alert("The values must be less than or equal to 59.");
         }
     }
 });
@@ -189,19 +201,32 @@ function switchMode(option) {
 
 // Confirm the change between the modes (Pomdoro, short break and long break).
 function confirmSwitchMode(option) {
-    if (!timerWorking) {
-        switchMode(option);
-        return true;
-    } else {
-        clearInterval(interval);
+    let isInteger = pomodoroTime.value % 1 === 0 && shortBreakTime.value % 1 === 0 && longBreakTime.value % 1 === 0;
+    timesToInt();
 
-        if (confirm('Your timer is running, would you like to switch it?')) {
+    if (isInteger) {
+        if (!timerWorking) {
             switchMode(option);
             return true;
         } else {
-            interval = setInterval(startTimer, 1000);
-            return false;
-        }
+            clearInterval(interval);
 
+            if (confirm('Your timer is running, would you like to switch it?')) {
+                switchMode(option);
+                return true;
+            } else {
+                interval = setInterval(startTimer, 1000);
+                return false;
+            }
+        }
+    } else {
+        alert("The values must be integers.");
     }
+}
+
+// The numbers can be integers, but with decimal floats, like "25.0". So, converting the numbers to Integer, it can resolve some problems.
+function timesToInt() {
+    pomodoroTime.value = parseInt(pomodoroTime.value);
+    shortBreakTime.value = parseInt(shortBreakTime.value);
+    longBreakTime.value = parseInt(longBreakTime.value);
 }
