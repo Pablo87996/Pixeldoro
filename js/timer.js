@@ -1,25 +1,28 @@
-var minutes = 25;
-var seconds = 0;
-var displayMinutes = document.getElementById("minutes");
-var displaySeconds = document.getElementById("seconds");
-var buttonStart = document.getElementById("button-start");
-var buttonStop = document.getElementById("button-stop");
-var buttonPomodoro = document.getElementById("button-pomodoro");
-var buttonShortBreak = document.getElementById("button-short-break");
-var buttonLongBreak = document.getElementById("button-long-break");
-var buttonSettings = document.getElementById('button-settings');
-var blur = document.getElementById('blur');
-var popUp = document.getElementById('pop-up');
-var buttonClose = document.getElementById('button-close');
-var pomodoroTime = document.getElementById('pomodoro-time');
-var shortBreakTime = document.getElementById('short-break-time');
-var longBreakTime = document.getElementById('long-break-time');
+let minutes = 25;
+let seconds = 0;
+const displayMinutes = document.getElementById("minutes");
+const displaySeconds = document.getElementById("seconds");
+const buttonStart = document.getElementById("button-start");
+const buttonStop = document.getElementById("button-stop");
+const buttonPomodoro = document.getElementById("button-pomodoro");
+const buttonShortBreak = document.getElementById("button-short-break");
+const buttonLongBreak = document.getElementById("button-long-break");
+const buttonSettings = document.getElementById('button-settings');
+const settings = document.getElementById('settings');
+const blur = document.getElementById('blur');
+const popUp = document.getElementById('pop-up');
+const buttonClose = document.getElementById('button-close');
+const pomodoroTime = document.getElementById('pomodoro-time');
+const shortBreakTime = document.getElementById('short-break-time');
+const longBreakTime = document.getElementById('long-break-time');
 const empty = document.getElementById('empty');
 const notification = document.getElementById('notification');
 const lofi = document.getElementById('lo-fi');
-var interval;
-var option = 0;
-var pomodors = 0;
+let interval;
+let option = 0;
+let pomodoros = 0;
+let timerWorking = false;
+let tmpTimes = null;
 pomodoroTime.value = 25;
 shortBreakTime.value = 5;
 longBreakTime.value = 15;
@@ -29,81 +32,63 @@ buttonStart.onclick = function () {
     clearInterval(interval);
     interval = setInterval(startTimer, 1000);
     buttonStart.classList.add('blocked');
+    timerWorking = true;
 }
 
 buttonStop.onclick = function () {
     clearInterval(interval);
     empty.pause();
     buttonStart.classList.remove('blocked');
+    timerWorking = false;
 }
 
 buttonPomodoro.onclick = function () {
     buttonStart.classList.remove('blocked');
-    clearInterval(interval);
-    empty.pause();
-    option = 0;
-    minutes = pomodoroTime.value;
-    seconds = 0;
-    if (minutes < 10) {
-        displayMinutes.innerHTML = "0" + minutes;
-    } else {
-        displayMinutes.innerHTML = minutes;
-    }
-    displaySeconds.innerHTML = "0" + seconds;
+    confirmSwitchMode(0);
 }
 
 buttonShortBreak.onclick = function () {
     buttonStart.classList.remove('blocked');
-    clearInterval(interval);
-    empty.pause();
-    option = 1;
-    minutes = shortBreakTime.value;
-    seconds = 0;
-    if (minutes < 10) {
-        displayMinutes.innerHTML = "0" + minutes;
-    } else {
-        displayMinutes.innerHTML = minutes;
-    }
-    displaySeconds.innerHTML = "0" + seconds;
+    confirmSwitchMode(1);
 }
 
 buttonLongBreak.onclick = function () {
     buttonStart.classList.remove('blocked');
-    clearInterval(interval);
-    empty.pause();
-    option = 2;
-    minutes = longBreakTime.value;
-    seconds = 0;
-    if (minutes < 10) {
-        displayMinutes.innerHTML = "0" + minutes;
-    } else {
-        displayMinutes.innerHTML = minutes;
-    }
-    displaySeconds.innerHTML = "0" + seconds;
+    confirmSwitchMode(2);
 }
 
-buttonClose.onclick = function () {
-    if (pomodoroTime.value > 0 && shortBreakTime.value > 0 && longBreakTime.value > 0 && pomodoroTime.value < 60 && shortBreakTime.value < 60 && longBreakTime.value < 60) {
-        blur.classList.toggle('active');
-        popUp.classList.toggle('active');
-    } else {
-        alert("Value must be less than or equal to 59.");
+settings.onclick = function () {
+    blur.classList.toggle('active');
+    popUp.classList.toggle('active');
+    let tmpTimes = [pomodoroTime.value, shortBreakTime.value, longBreakTime.value];
+
+    buttonClose.onclick = function () {
+        if (pomodoroTime.value > 0 && shortBreakTime.value > 0 && longBreakTime.value > 0 && pomodoroTime.value < 60 && shortBreakTime.value < 60 && longBreakTime.value < 60) {
+            if (tmpTimes[0] != pomodoroTime.value || tmpTimes[1] != shortBreakTime.value || tmpTimes[2] != longBreakTime.value) {
+                if (!confirmSwitchMode(0)) {
+                    pomodoroTime.value = tmpTimes[0];
+                    shortBreakTime.value = tmpTimes[1];
+                    longBreakTime.value = tmpTimes[2];
+                    tmpTimes = null;
+                }
+            }
+
+            blur.classList.toggle('active');
+            popUp.classList.toggle('active');
+        } else {
+            alert("Value must be less than or equal to 59.");
+        }
     }
 }
 
+
+// Settings
 pomodoroTime.addEventListener('keypress', (e) => {
     if (e.keyCode == 13) {
         if (pomodoroTime.value > 0 && pomodoroTime.value < 60) {
-            clearInterval(interval);
-            minutes = pomodoroTime.value;
-            seconds = 0;
-            if (minutes < 10) {
-                displayMinutes.innerHTML = "0" + minutes;
-            } else {
-                displayMinutes.innerHTML = minutes;
+            if (confirmSwitchMode(0)) {
+                buttonClose.onclick();
             }
-            displaySeconds.innerHTML = "0" + seconds;
-            buttonClose.onclick();
         } else {
             alert("Value must be less than or equal to 59.");
         }
@@ -113,16 +98,9 @@ pomodoroTime.addEventListener('keypress', (e) => {
 shortBreakTime.addEventListener('keypress', (e) => {
     if (e.keyCode == 13) {
         if (shortBreakTime.value > 0 && shortBreakTime.value < 60) {
-            clearInterval(interval);
-            minutes = shortBreakTime.value;
-            seconds = 0;
-            if (minutes < 10) {
-                displayMinutes.innerHTML = "0" + minutes;
-            } else {
-                displayMinutes.innerHTML = minutes;
+            if (confirmSwitchMode(0)) {
+                buttonClose.onclick();
             }
-            displaySeconds.innerHTML = "0" + seconds;
-            buttonClose.onclick();
         } else {
             alert("Value must be less than or equal to 59.");
         }
@@ -132,16 +110,9 @@ shortBreakTime.addEventListener('keypress', (e) => {
 longBreakTime.addEventListener('keypress', (e) => {
     if (e.keyCode == 13) {
         if (longBreakTime.value > 0 && longBreakTime.value < 60) {
-            clearInterval(interval);
-            minutes = longBreakTime.value;
-            seconds = 0;
-            if (minutes < 10) {
-                displayMinutes.innerHTML = "0" + minutes;
-            } else {
-                displayMinutes.innerHTML = minutes;
+            if (confirmSwitchMode(0)) {
+                buttonClose.onclick();
             }
-            displaySeconds.innerHTML = "0" + seconds;
-            buttonClose.onclick();
         } else {
             alert("Value must be less than or equal to 59.");
         }
@@ -175,15 +146,63 @@ function startTimer() {
 
     if (minutes < 0 && seconds == 59) {
         notification.play();
-        if (option == 0 && pomodors < 3) {
+        if (option == 0 && pomodoros < 3) {
             buttonShortBreak.onclick();
-            pomodors++;
-        } else if (option == 0 && pomodors == 3) {
+            pomodoros++;
+        } else if (option == 0 && pomodoros == 3) {
             buttonLongBreak.onclick();
-            pomodors = 0;
+            pomodoros = 0;
         } else {
             buttonPomodoro.onclick();
         }
     }
 }
 
+// Switch between Pomodoro, short break and long break.
+function switchMode(option) {
+    buttonStart.classList.remove('blocked');
+    timerWorking = false;
+    empty.pause();
+
+    seconds = 0;
+
+    switch (option) {
+        case 0:
+            minutes = pomodoroTime.value;
+            break;
+        case 1:
+            minutes = shortBreakTime.value;
+            break;
+        case 2:
+            minutes = longBreakTime.value;
+        default:
+            break;
+    }
+
+    if (minutes < 10) {
+        displayMinutes.innerHTML = "0" + minutes;
+    } else {
+        displayMinutes.innerHTML = minutes;
+    }
+
+    displaySeconds.innerHTML = "0" + seconds;
+}
+
+// Confirm the change between the modes (Pomdoro, short break and long break).
+function confirmSwitchMode(option) {
+    if (!timerWorking) {
+        switchMode(option);
+        return true;
+    } else {
+        clearInterval(interval);
+
+        if (confirm('Your timer is running, would you like to switch it?')) {
+            switchMode(option);
+            return true;
+        } else {
+            interval = setInterval(startTimer, 1000);
+            return false;
+        }
+
+    }
+}

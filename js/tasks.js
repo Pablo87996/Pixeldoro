@@ -7,28 +7,27 @@ var tasksOn = 0;
 var nameList = [];
 var idList = [];
 
-if(localStorage.getItem("completedTasks") == null){
+if (localStorage.getItem("completedTasks") == null) {
     localStorage.setItem("completedTasks", 0);
-}else{
+} else {
     completedTasks = localStorage.getItem("completedTasks");
-    console.log(completedTasks);
     displayCompletedTasks.innerHTML = completedTasks;
 }
 
 //Verificação de tarefas (tasks) ativas:
 //Caso não haja tarefas ativas, é criada uma chave para guardar o número de tarefas;
 //Se houver alguma tarefa em aberto, elas são resgatadas no Local Storage.
-if(localStorage.getItem("tasksOn") == null || localStorage.getItem("tasksOn") == 0){
+if (localStorage.getItem("tasksOn") == null || localStorage.getItem("tasksOn") == 0) {
     localStorage.setItem("tasksOn", 0);
     localStorage.setItem("nameList", []);
     localStorage.setItem("idList", []);
-}else{
+} else {
     tasksOn = localStorage.getItem("tasksOn");
 
     nameList = JSON.parse(localStorage.nameList);
     idList = JSON.parse(localStorage.idList);
 
-    for(let i= 0; i < tasksOn; i++){
+    for (let i = 0; i < tasksOn; i++) {
         var task = {
             name: nameList[i],
             id: idList[i]
@@ -39,7 +38,7 @@ if(localStorage.getItem("tasksOn") == null || localStorage.getItem("tasksOn") ==
 }
 
 inputNewTask.addEventListener('keypress', (e) => {
-    if(e.keyCode == 13) {
+    if (e.keyCode == 13) {
         var task = {
             name: inputNewTask.value,
             id: generateId(),
@@ -49,8 +48,8 @@ inputNewTask.addEventListener('keypress', (e) => {
         inputNewTask.value = '';
         tasksOn++;
         localStorage.setItem("tasksOn", tasksOn);
-        
-        if(tasksOn <= 10){
+
+        if (tasksOn <= 10) {
             nameList.push(task.name);
             idList.push(task.id);
             localStorage.nameList = JSON.stringify(nameList);
@@ -82,10 +81,10 @@ function generateId() {
 }
 
 function addTask(task, ul) {
-    if(inputNewTask.value == '') {
+    if (inputNewTask.value == '') {
         alert('Escreva alguma coisa, por favor!');
     } else {
-        if(tasksOn <10) {
+        if (tasksOn < 10) {
             var li = createTagLI(task, ul);
             ul.appendChild(li);
         } else {
@@ -95,9 +94,9 @@ function addTask(task, ul) {
     }
 }
 
-function removeTask(task, ul){
-    var li = document.getElementById(''+task.id+'');
-    if(li) {
+function removeTask(task, ul) {
+    var li = document.getElementById('' + task.id + '');
+    if (li) {
         ul.removeChild(li);
         let index = idList.indexOf(task.id);
         idList.splice(index, 1);
@@ -107,7 +106,7 @@ function removeTask(task, ul){
         localStorage.idList = JSON.stringify(idList);
     }
 
-    if(tasksOn == "Max"){
+    if (tasksOn == "Max") {
         tasksOn = 10;
     }
     tasksOn--;
@@ -127,9 +126,9 @@ function createTagLI(task, ul) {
     var buttonDelete = document.createElement('button');
     buttonDelete.classList.add('button-action');
     buttonDelete.innerHTML = '❌';
-    buttonDelete.onclick = function(){
+    buttonDelete.onclick = function () {
         var confirmacao = window.confirm('A tarefa será deletada!')
-        if(confirmacao) {
+        if (confirmacao) {
             removeTask(task, toDoList);
         }
     }
@@ -137,7 +136,7 @@ function createTagLI(task, ul) {
     var buttonCheck = document.createElement('button');
     buttonCheck.classList.add('button-action');
     buttonCheck.innerHTML = '✔️';
-    buttonCheck.onclick = function(){
+    buttonCheck.onclick = function () {
         removeTask(task, toDoList);
 
         completedTasks++;
