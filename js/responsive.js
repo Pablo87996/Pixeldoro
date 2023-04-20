@@ -19,6 +19,5 @@ function closeNav() {
 responsiveSettings.onclick = function () {
     closeNav();
 
-    popUp.classList.toggle('active');
-    blur.classList.toggle('active');
+    settings.onclick();
 }

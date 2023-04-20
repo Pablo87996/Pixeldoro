@@ -411,17 +411,8 @@ hr {
         font-size: 16vw;
     }
 
-    #input-time input {
-        width: 92%;
-    }
-
-    .language-settings {
-        width: 100%;
-    }
-
-    #lo-fi {
-        display: absolute;
-        width: 100%;
+    .settings {
+        grid-template-columns: 1fr;
     }
 
     .tasks {
@@ -444,8 +435,12 @@ hr {
 }
 
 .sidenav-trigger {
-    height: 2.5rem !important;
+    display: flex;
     align-self: center;
+
+    height: 2.5rem !important;
+    font-size: 2.5rem;
+    margin: 0 !important;
 }
 
 .title-tasks {
