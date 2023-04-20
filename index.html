@@ -103,7 +103,7 @@
             </div>
 
             <div class="tasks">
-                <input type="" id="input-new-task" placeholder="Add new task">
+                <input type="text" id="input-new-task" placeholder="Add new task">
 
                 <button id="button-new-task">➕</button>
 
@@ -187,36 +187,43 @@
         </span>
         <hr>
 
-        <div id="input-time">
-            Pomodoro
-            <p>
-                <input type="number" min="1" max="59" id="pomodoro-time">
-            </p>
-            Short break
-            <p>
-                <input type="number" min="1" max="59" id="short-break-time">
-            </p>
-            Long break
-            <p>
-                <input type="number" min="1" max="59" id="long-break-time">
-            </p>
-        </div>
-        Music
-        <p>
-            <audio controls id="lo-fi">
-                <source src="./sounds/lo-fi.mp3" type="audio/mpeg">
-            </audio>
-        </p>
+        <div class="settings">
+            <div>
+                <div id="input-time">
+                    Pomodoro
+                    <p>
+                        <input type="number" min="1" max="59" id="pomodoro-time">
+                    </p>
 
-        Language
-        <p>
-        <ul id="dropdown2" class="dropdown-content">
-            <li><span class="pt-br"><img src="./img/pt-br.png" alt="pt-br">pt-BR</span></li>
-            <li><span class="en"><img src="./img/en.png" alt="en">en</span></li>
-        </ul>
-        <a class="btn dropdown-trigger language-settings" href="" data-target="dropdown2">English<i
-                class="material-icons right">arrow_drop_down</i></a>
-        </p>
+                    Short break
+                    <p>
+                        <input type="number" min="1" max="59" id="short-break-time">
+                    </p>
+
+                    Long break
+                    <p>
+                        <input type="number" min="1" max="59" id="long-break-time">
+                    </p>
+                </div>
+
+                Music
+                <p>
+                    <audio controls id="lo-fi">
+                        <source src="./sounds/lo-fi.mp3" type="audio/mpeg">
+                    </audio>
+                </p>
+
+                Language
+                <p>
+                <ul id="dropdown2" class="dropdown-content">
+                    <li><span class="pt-br"><img src="./img/pt-br.png" alt="pt-br">pt-BR</span></li>
+                    <li><span class="en"><img src="./img/en.png" alt="en">en</span></li>
+                </ul>
+                <a class="btn dropdown-trigger language-settings" href="" data-target="dropdown2">English<i
+                        class="material-icons right">arrow_drop_down</i></a>
+                </p>
+            </div>
+        </div>
     </div>
 
     <div class="pop-up" id="versiculo-pop-up">
