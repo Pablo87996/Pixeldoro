@@ -25,23 +25,26 @@ shortBreakTime.value = 5;
 longBreakTime.value = 15;
 
 //Buttons
-buttonStart.onclick = function() {
+buttonStart.onclick = function () {
     clearInterval(interval);
     interval = setInterval(startTimer, 1000);
+    buttonStart.classList.add('blocked');
 }
 
-buttonStop.onclick = function() {
+buttonStop.onclick = function () {
     clearInterval(interval);
     empty.pause();
+    buttonStart.classList.remove('blocked');
 }
 
-buttonPomodoro.onclick = function() {
+buttonPomodoro.onclick = function () {
+    buttonStart.classList.remove('blocked');
     clearInterval(interval);
     empty.pause();
     option = 0;
     minutes = pomodoroTime.value;
     seconds = 0;
-    if(minutes < 10) {
+    if (minutes < 10) {
         displayMinutes.innerHTML = "0" + minutes;
     } else {
         displayMinutes.innerHTML = minutes;
@@ -49,13 +52,14 @@ buttonPomodoro.onclick = function() {
     displaySeconds.innerHTML = "0" + seconds;
 }
 
-buttonShortBreak.onclick = function() {
+buttonShortBreak.onclick = function () {
+    buttonStart.classList.remove('blocked');
     clearInterval(interval);
     empty.pause();
     option = 1;
     minutes = shortBreakTime.value;
     seconds = 0;
-    if(minutes < 10) {
+    if (minutes < 10) {
         displayMinutes.innerHTML = "0" + minutes;
     } else {
         displayMinutes.innerHTML = minutes;
@@ -63,13 +67,14 @@ buttonShortBreak.onclick = function() {
     displaySeconds.innerHTML = "0" + seconds;
 }
 
-buttonLongBreak.onclick = function() {
+buttonLongBreak.onclick = function () {
+    buttonStart.classList.remove('blocked');
     clearInterval(interval);
     empty.pause();
     option = 2;
     minutes = longBreakTime.value;
     seconds = 0;
-    if(minutes < 10) {
+    if (minutes < 10) {
         displayMinutes.innerHTML = "0" + minutes;
     } else {
         displayMinutes.innerHTML = minutes;
@@ -77,73 +82,67 @@ buttonLongBreak.onclick = function() {
     displaySeconds.innerHTML = "0" + seconds;
 }
 
-//Settings
-// buttonSettings.onclick = function() {
-//     blur.classList.toggle('active');
-//     popUp.classList.toggle('active');   
-// }
-
-buttonClose.onclick = function() {
-    if(pomodoroTime.value > 0 && shortBreakTime.value > 0 && longBreakTime.value > 0 && pomodoroTime.value < 60 && shortBreakTime.value < 60 && longBreakTime.value < 60){
+buttonClose.onclick = function () {
+    if (pomodoroTime.value > 0 && shortBreakTime.value > 0 && longBreakTime.value > 0 && pomodoroTime.value < 60 && shortBreakTime.value < 60 && longBreakTime.value < 60) {
         blur.classList.toggle('active');
         popUp.classList.toggle('active');
-    }else{
+    } else {
         alert("Value must be less than or equal to 59.");
     }
 }
 
 pomodoroTime.addEventListener('keypress', (e) => {
-    if(e.keyCode == 13) {
-        if(pomodoroTime.value > 0 && pomodoroTime.value < 60){
+    if (e.keyCode == 13) {
+        if (pomodoroTime.value > 0 && pomodoroTime.value < 60) {
             clearInterval(interval);
             minutes = pomodoroTime.value;
             seconds = 0;
-            if(minutes < 10) {
+            if (minutes < 10) {
                 displayMinutes.innerHTML = "0" + minutes;
             } else {
                 displayMinutes.innerHTML = minutes;
             }
             displaySeconds.innerHTML = "0" + seconds;
             buttonClose.onclick();
-        }else{
+        } else {
             alert("Value must be less than or equal to 59.");
         }
     }
 });
 
 shortBreakTime.addEventListener('keypress', (e) => {
-    if(e.keyCode == 13) {
-        if(shortBreakTime.value > 0 && shortBreakTime.value < 60){
+    if (e.keyCode == 13) {
+        if (shortBreakTime.value > 0 && shortBreakTime.value < 60) {
             clearInterval(interval);
             minutes = shortBreakTime.value;
             seconds = 0;
-            if(minutes < 10) {
+            if (minutes < 10) {
                 displayMinutes.innerHTML = "0" + minutes;
             } else {
                 displayMinutes.innerHTML = minutes;
             }
             displaySeconds.innerHTML = "0" + seconds;
             buttonClose.onclick();
-        }else{
+        } else {
             alert("Value must be less than or equal to 59.");
         }
     }
 });
 
 longBreakTime.addEventListener('keypress', (e) => {
-    if(e.keyCode == 13) {
-        if(longBreakTime.value > 0 && longBreakTime.value < 60){
+    if (e.keyCode == 13) {
+        if (longBreakTime.value > 0 && longBreakTime.value < 60) {
             clearInterval(interval);
             minutes = longBreakTime.value;
             seconds = 0;
-            if(minutes < 10) {
+            if (minutes < 10) {
                 displayMinutes.innerHTML = "0" + minutes;
             } else {
                 displayMinutes.innerHTML = minutes;
             }
             displaySeconds.innerHTML = "0" + seconds;
             buttonClose.onclick();
-        }else{
+        } else {
             alert("Value must be less than or equal to 59.");
         }
     }
@@ -154,35 +153,35 @@ longBreakTime.addEventListener('keypress', (e) => {
 function startTimer() {
     empty.play();
     seconds--;
-    
-    if(seconds <= 9) {
+
+    if (seconds <= 9) {
         displaySeconds.innerHTML = "0" + seconds;
     }
 
-    if(seconds > 9) {
+    if (seconds > 9) {
         displaySeconds.innerHTML = seconds;
     }
 
-    if(seconds < 0){
+    if (seconds < 0) {
         minutes--;
         displayMinutes.innerHTML = minutes;
         seconds = 59;
         displaySeconds.innerHTML = seconds;
     }
 
-    if(minutes <= 9) {
+    if (minutes <= 9) {
         displayMinutes.innerHTML = "0" + minutes;
     }
 
-    if(minutes < 0 && seconds == 59) {
+    if (minutes < 0 && seconds == 59) {
         notification.play();
-        if(option == 0 && pomodors < 3){
+        if (option == 0 && pomodors < 3) {
             buttonShortBreak.onclick();
             pomodors++;
-        }else if(option == 0 && pomodors == 3) {
+        } else if (option == 0 && pomodors == 3) {
             buttonLongBreak.onclick();
             pomodors = 0;
-        }else {
+        } else {
             buttonPomodoro.onclick();
         }
     }
