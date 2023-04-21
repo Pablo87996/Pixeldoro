@@ -157,6 +157,8 @@ function startTimer() {
 
     if (minutes < 0 && seconds == 59) {
         notification.play();
+        clearInterval(interval);
+
         if (option == 0 && pomodoros < 3) {
             buttonShortBreak.onclick();
             pomodoros++;
@@ -205,7 +207,7 @@ function confirmSwitchMode(option) {
     timesToInt();
 
     if (isInteger) {
-        if (!timerWorking) {
+        if (!timerWorking || (minutes < 0 && seconds == 59)) {
             switchMode(option);
             return true;
         } else {
