@@ -81,7 +81,7 @@ function generateId() {
 }
 
 function addTask(task, ul) {
-    if (inputNewTask.value == '') {
+    if (inputNewTask.value.trim() == '') {
         alert('Escreva alguma coisa, por favor!');
     } else {
         if (tasksOn < 10) {
