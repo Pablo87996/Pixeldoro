@@ -129,6 +129,10 @@ header nav {
     justify-content: space-between;
 }
 
+label span {
+    display: inline !important;
+}
+
 .subpage {
     display: grid;
     grid-template-columns: 1fr 3fr 1fr;
