@@ -1,16 +1,26 @@
 const en = document.querySelectorAll('.en');
 const ptBR = document.querySelectorAll('.pt-br');
+const defaultLanguage = document.querySelectorAll('#default-language');
 
 let href = window.location.href;
 let lastElement = href.split('/')[href.split('/').length-1];
 let link;
 
-// if(localStorage.getItem('language') == null){
-//     localStorage.setItem('language', 'en');
-// }else{
-//     localStorage.getItem('language');
-//     update();
-// }
+if(localStorage.getItem('defaultLanguage') == 0 || localStorage.getItem('defaultLanguage') == null){
+    if(href.includes('pt-br')){
+        localStorage.setItem('language', 'pt-br');
+    }else{
+        localStorage.setItem('language', 'en');
+    }
+}
+
+if(localStorage.getItem('defaultLanguage') == null){
+    localStorage.setItem('defaultLanguage', 0); 
+}else{
+    if(localStorage.getItem('defaultLanguage') == 1){
+        update();
+    }
+}
 
 en.forEach((element) => {
     element.onclick = () => {
@@ -23,6 +33,22 @@ ptBR.forEach((element) => {
     element.onclick = () => {
         localStorage.setItem('language', 'pt-br');
         update();
+    }
+});
+
+defaultLanguage.forEach((element) => {
+    element.onclick = () => {
+        if(element.checked == true){
+            localStorage.setItem('defaultLanguage', 1);
+        }else{
+            localStorage.setItem('defaultLanguage', 0);
+        }
+    }
+
+    if(localStorage.getItem('defaultLanguage') == 0){
+        element.checked = false;
+    }else{
+        element.checked = true;
     }
 });
 
