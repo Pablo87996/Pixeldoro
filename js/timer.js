@@ -1,5 +1,4 @@
 let minutes = 25;
-let seconds = 0;
 const displayMinutes = document.getElementById("minutes");
 const displaySeconds = document.getElementById("seconds");
 const buttonStart = document.getElementById("button-start");
@@ -15,7 +14,6 @@ const buttonClose = document.getElementById('button-close');
 const pomodoroTime = document.getElementById('pomodoro-time');
 const shortBreakTime = document.getElementById('short-break-time');
 const longBreakTime = document.getElementById('long-break-time');
-// const empty = document.getElementById('empty');
 const notification = document.getElementById('notification');
 const lofi = document.getElementById('lo-fi');
 let interval;
@@ -26,14 +24,15 @@ let tmpTimes = null;
 let date;
 let timeRemaining;
 let endTime;
+
 pomodoroTime.value = 25;
 shortBreakTime.value = 5;
 longBreakTime.value = 15;
 
-
 //Buttons
 buttonStart.onclick = function () {
     clearInterval(interval);
+
     date = new Date();
     timeRemaining = new Date();
     date.setMinutes(date.getMinutes() + minutes);
@@ -46,7 +45,6 @@ buttonStart.onclick = function () {
 
 buttonStop.onclick = function () {
     clearInterval(interval);
-    empty.pause();
     buttonStart.classList.remove('blocked');
     timerWorking = false;
 }
@@ -100,26 +98,6 @@ settings.onclick = function () {
     }
 }
 
-// const date = new Date();
-// const timeRemaining = new Date();
-
-// date.setMinutes(date.getMinutes() + minutes);
-
-// let endTime = date;
-
-// const interval1 = setInterval(() => {
-//     // timeRemaining.setHours(endTime.getHours() - new Date().getHours());
-//     // timeRemaining.setMinutes(endTime.getMinutes() - new Date().getMinutes());
-//     // timeRemaining.setSeconds(endTime.getSeconds() - new Date().getSeconds());
-
-//     console.log(`${timeRemaining.getHours()}:${timeRemaining.getMinutes()}:${timeRemaining.getSeconds()} \n`);
-    
-//     if(timeRemaining.getHours() == 0 && timeRemaining.getMinutes() == 0 && timeRemaining.getSeconds() == 0) {
-//         clearInterval(interval1);
-//     }
-// }, 1000);
-
-
 // Settings
 pomodoroTime.addEventListener('keypress', (e) => {
     if (e.keyCode == 13) {
@@ -158,10 +136,7 @@ longBreakTime.addEventListener('keypress', (e) => {
 });
 
 //Function startTimer.
-
 function startTimer() {
-    // empty.play();
-    // seconds--;
     timeRemaining.setHours(endTime.getHours() - new Date().getHours());
     timeRemaining.setMinutes(endTime.getMinutes() - new Date().getMinutes());
     timeRemaining.setSeconds(endTime.getSeconds() - new Date().getSeconds());
@@ -177,13 +152,6 @@ function startTimer() {
     if (timeRemaining.getMinutes() > 9) {
         displayMinutes.innerHTML = timeRemaining.getMinutes();
     }
-
-    // if (timeRemaining.getSeconds() < 0) {
-    //     // minutes--;
-    //     displayMinutes.innerHTML = timeRemaining.getMinutes();
-    //     // seconds = 59;
-    //     displaySeconds.innerHTML = timeRemaining.getSeconds();
-    // }
 
     if (timeRemaining.getMinutes() <= 9) {
         displayMinutes.innerHTML = "0" + timeRemaining.getMinutes();
@@ -210,7 +178,6 @@ function startTimer() {
 function switchMode(option) {
     buttonStart.classList.remove('blocked');
     timerWorking = false;
-    // empty.pause();
 
     try{
         timeRemaining.setSeconds(0);
@@ -244,7 +211,7 @@ function switchMode(option) {
     }
 }
 
-// Confirm the change between the modes (Pomdoro, short break and long break).
+// Confirm the change between the modes (Pomodoro, short break and long break).
 function confirmSwitchMode(option) {
     let isInteger = pomodoroTime.value % 1 === 0 && shortBreakTime.value % 1 === 0 && longBreakTime.value % 1 === 0;
     timesToInt();
