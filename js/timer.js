@@ -50,17 +50,14 @@ buttonStop.onclick = function () {
 }
 
 buttonPomodoro.onclick = function () {
-    buttonStart.classList.remove('blocked');
     confirmSwitchMode(0);
 }
 
 buttonShortBreak.onclick = function () {
-    buttonStart.classList.remove('blocked');
     confirmSwitchMode(1);
 }
 
 buttonLongBreak.onclick = function () {
-    buttonStart.classList.remove('blocked');
     confirmSwitchMode(2);
 }
 
