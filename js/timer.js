@@ -1,4 +1,5 @@
 let minutes = 25;
+let seconds = 0;
 const displayMinutes = document.getElementById("minutes");
 const displaySeconds = document.getElementById("seconds");
 const buttonStart = document.getElementById("button-start");
@@ -22,7 +23,7 @@ let pomodoros = 0;
 let timerWorking = false;
 let tmpTimes = null;
 let date;
-let timeRemaining;
+let timeRemaining = null;
 let endTime;
 
 pomodoroTime.value = 25;
@@ -36,6 +37,7 @@ buttonStart.onclick = function () {
     date = new Date();
     timeRemaining = new Date();
     date.setMinutes(date.getMinutes() + minutes);
+    date.setSeconds(date.getSeconds() + seconds);
     endTime = date;
     
     interval = setInterval(startTimer, 1000);
@@ -45,20 +47,25 @@ buttonStart.onclick = function () {
 
 buttonStop.onclick = function () {
     clearInterval(interval);
+    minutes = timeRemaining.getMinutes();
+    seconds = timeRemaining.getSeconds();
     buttonStart.classList.remove('blocked');
     timerWorking = false;
 }
 
 buttonPomodoro.onclick = function () {
-    confirmSwitchMode(0);
+    option = 0;
+    confirmSwitchMode(option);
 }
 
 buttonShortBreak.onclick = function () {
-    confirmSwitchMode(1);
+    option = 1;
+    confirmSwitchMode(option);
 }
 
 buttonLongBreak.onclick = function () {
-    confirmSwitchMode(2);
+    option = 2;
+    confirmSwitchMode(option);
 }
 
 settings.onclick = function () {
@@ -134,22 +141,24 @@ longBreakTime.addEventListener('keypress', (e) => {
 
 //Function startTimer.
 function startTimer() {
-    timeRemaining.setHours(endTime.getHours() - new Date().getHours());
-    timeRemaining.setMinutes(endTime.getMinutes() - new Date().getMinutes());
-    timeRemaining.setSeconds(endTime.getSeconds() - new Date().getSeconds());
-
+    if(!(timeRemaining.setHours(endTime.getHours() - new Date().getHours()) == 0 && timeRemaining.setMinutes(endTime.getMinutes() - new Date().getMinutes()) == 0 && timeRemaining.setSeconds(endTime.getSeconds() - new Date().getSeconds()) == 0)){
+        timeRemaining.setHours(endTime.getHours() - new Date().getHours());
+        timeRemaining.setMinutes(endTime.getMinutes() - new Date().getMinutes());
+        timeRemaining.setSeconds(endTime.getSeconds() - new Date().getSeconds());
+    }
+    
     if (timeRemaining.getSeconds() <= 9) {
         displaySeconds.innerHTML = "0" + timeRemaining.getSeconds();
     }
-
+    
     if (timeRemaining.getSeconds() > 9) {
         displaySeconds.innerHTML = timeRemaining.getSeconds();
     }
-
+    
     if (timeRemaining.getMinutes() > 9) {
         displayMinutes.innerHTML = timeRemaining.getMinutes();
     }
-
+    
     if (timeRemaining.getMinutes() <= 9) {
         displayMinutes.innerHTML = "0" + timeRemaining.getMinutes();
     }
@@ -158,7 +167,7 @@ function startTimer() {
         timerWorking = false;
         notification.play();
         clearInterval(interval);
-
+        
         if (option == 0 && pomodoros < 3) {
             buttonShortBreak.onclick();
             pomodoros++;
@@ -175,6 +184,7 @@ function startTimer() {
 function switchMode(option) {
     buttonStart.classList.remove('blocked');
     timerWorking = false;
+    seconds = 0;
 
     try{
         timeRemaining.setSeconds(0);
