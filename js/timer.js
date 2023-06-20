@@ -15,7 +15,6 @@ const buttonClose = document.getElementById('button-close');
 const pomodoroTime = document.getElementById('pomodoro-time');
 const shortBreakTime = document.getElementById('short-break-time');
 const longBreakTime = document.getElementById('long-break-time');
-const empty = document.getElementById('empty');
 const notification = document.getElementById('notification');
 const lofi = document.getElementById('lo-fi');
 let interval;
@@ -23,6 +22,10 @@ let option = 0;
 let pomodoros = 0;
 let timerWorking = false;
 let tmpTimes = null;
+let date;
+let timeRemaining = null;
+let endTime;
+
 pomodoroTime.value = 25;
 shortBreakTime.value = 5;
 longBreakTime.value = 15;
@@ -30,6 +33,13 @@ longBreakTime.value = 15;
 //Buttons
 buttonStart.onclick = function () {
     clearInterval(interval);
+
+    date = new Date();
+    timeRemaining = new Date();
+    date.setMinutes(date.getMinutes() + minutes);
+    date.setSeconds(date.getSeconds() + seconds);
+    endTime = date;
+    
     interval = setInterval(startTimer, 1000);
     buttonStart.classList.add('blocked');
     timerWorking = true;
@@ -37,24 +47,25 @@ buttonStart.onclick = function () {
 
 buttonStop.onclick = function () {
     clearInterval(interval);
-    empty.pause();
+    minutes = timeRemaining.getMinutes();
+    seconds = timeRemaining.getSeconds();
     buttonStart.classList.remove('blocked');
     timerWorking = false;
 }
 
 buttonPomodoro.onclick = function () {
-    buttonStart.classList.remove('blocked');
-    confirmSwitchMode(0);
+    option = 0;
+    confirmSwitchMode(option);
 }
 
 buttonShortBreak.onclick = function () {
-    buttonStart.classList.remove('blocked');
-    confirmSwitchMode(1);
+    option = 1;
+    confirmSwitchMode(option);
 }
 
 buttonLongBreak.onclick = function () {
-    buttonStart.classList.remove('blocked');
-    confirmSwitchMode(2);
+    option = 2;
+    confirmSwitchMode(option);
 }
 
 settings.onclick = function () {
@@ -63,8 +74,6 @@ settings.onclick = function () {
     let tmpTimes = [pomodoroTime.value, shortBreakTime.value, longBreakTime.value];
 
     buttonClose.onclick = function () {
-        // let isInteger = Number.isInteger(parseInt(pomodoroTime.value)) && Number.isInteger(parseInt(shortBreakTime.value)) && Number.isInteger(parseInt(longBreakTime.value));
-        // let isInteger = pomodoroTime.value % 1 === 0 && shortBreakTime.value % 1 === 0 && longBreakTime.value % 1 === 0;
         let isPositive = pomodoroTime.value > 0 && shortBreakTime.value > 0 && longBreakTime.value > 0;
         let isLessThanSixty = pomodoroTime.value < 60 && shortBreakTime.value < 60 && longBreakTime.value < 60;
         let isInteger = pomodoroTime.value % 1 === 0 && shortBreakTime.value % 1 === 0 && longBreakTime.value % 1 === 0;
@@ -131,34 +140,34 @@ longBreakTime.addEventListener('keypress', (e) => {
 });
 
 //Function startTimer.
-
 function startTimer() {
-    empty.play();
-    seconds--;
-
-    if (seconds <= 9) {
-        displaySeconds.innerHTML = "0" + seconds;
+    if(!(timeRemaining.setHours(endTime.getHours() - new Date().getHours()) == 0 && timeRemaining.setMinutes(endTime.getMinutes() - new Date().getMinutes()) == 0 && timeRemaining.setSeconds(endTime.getSeconds() - new Date().getSeconds()) == 0)){
+        timeRemaining.setHours(endTime.getHours() - new Date().getHours());
+        timeRemaining.setMinutes(endTime.getMinutes() - new Date().getMinutes());
+        timeRemaining.setSeconds(endTime.getSeconds() - new Date().getSeconds());
+    }
+    
+    if (timeRemaining.getSeconds() <= 9) {
+        displaySeconds.innerHTML = "0" + timeRemaining.getSeconds();
+    }
+    
+    if (timeRemaining.getSeconds() > 9) {
+        displaySeconds.innerHTML = timeRemaining.getSeconds();
+    }
+    
+    if (timeRemaining.getMinutes() > 9) {
+        displayMinutes.innerHTML = timeRemaining.getMinutes();
+    }
+    
+    if (timeRemaining.getMinutes() <= 9) {
+        displayMinutes.innerHTML = "0" + timeRemaining.getMinutes();
     }
 
-    if (seconds > 9) {
-        displaySeconds.innerHTML = seconds;
-    }
-
-    if (seconds < 0) {
-        minutes--;
-        displayMinutes.innerHTML = minutes;
-        seconds = 59;
-        displaySeconds.innerHTML = seconds;
-    }
-
-    if (minutes <= 9) {
-        displayMinutes.innerHTML = "0" + minutes;
-    }
-
-    if (minutes < 0 && seconds == 59) {
+    if (timeRemaining.getHours() == 0 && timeRemaining.getMinutes() == 0 && timeRemaining.getSeconds() == 0) {
+        timerWorking = false;
         notification.play();
         clearInterval(interval);
-
+        
         if (option == 0 && pomodoros < 3) {
             buttonShortBreak.onclick();
             pomodoros++;
@@ -175,19 +184,23 @@ function startTimer() {
 function switchMode(option) {
     buttonStart.classList.remove('blocked');
     timerWorking = false;
-    empty.pause();
-
     seconds = 0;
+
+    try{
+        timeRemaining.setSeconds(0);
+    }catch(error){
+        // pass
+    }
 
     switch (option) {
         case 0:
-            minutes = pomodoroTime.value;
+            minutes = parseInt(pomodoroTime.value);
             break;
         case 1:
-            minutes = shortBreakTime.value;
+            minutes = parseInt(shortBreakTime.value);
             break;
         case 2:
-            minutes = longBreakTime.value;
+            minutes = parseInt(longBreakTime.value);
         default:
             break;
     }
@@ -198,16 +211,20 @@ function switchMode(option) {
         displayMinutes.innerHTML = minutes;
     }
 
-    displaySeconds.innerHTML = "0" + seconds;
+    try{
+        displaySeconds.innerHTML = "0" + timeRemaining.getSeconds();
+    }catch(error){
+        // pass
+    }
 }
 
-// Confirm the change between the modes (Pomdoro, short break and long break).
+// Confirm the change between the modes (Pomodoro, short break and long break).
 function confirmSwitchMode(option) {
     let isInteger = pomodoroTime.value % 1 === 0 && shortBreakTime.value % 1 === 0 && longBreakTime.value % 1 === 0;
     timesToInt();
 
     if (isInteger) {
-        if (!timerWorking || (minutes < 0 && seconds == 59)) {
+        if (!timerWorking) {
             switchMode(option);
             return true;
         } else {
