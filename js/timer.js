@@ -1,5 +1,3 @@
-let minutes = 25;
-let seconds = 0;
 const displayMinutes = document.getElementById("minutes");
 const displaySeconds = document.getElementById("seconds");
 const buttonStart = document.getElementById("button-start");
@@ -17,40 +15,36 @@ const shortBreakTime = document.getElementById('short-break-time');
 const longBreakTime = document.getElementById('long-break-time');
 const notification = document.getElementById('notification');
 const lofi = document.getElementById('lo-fi');
-let interval;
 let option = 0;
 let pomodoros = 0;
 let timerWorking = false;
 let tmpTimes = null;
-let date;
 let timeRemaining = null;
-let endTime;
+let minutes = 25;
+let seconds = 0;
 
 pomodoroTime.value = 25;
 shortBreakTime.value = 5;
 longBreakTime.value = 15;
 
+const worker = new Worker('./js/worker.js');
+
+worker.onmessage = (e) => {
+    let data = e.data;
+
+    timerWorking = data.working;
+    updateTimer(e.data);
+}
+
 //Buttons
 buttonStart.onclick = function () {
-    clearInterval(interval);
-
-    date = new Date();
-    timeRemaining = new Date();
-    date.setMinutes(date.getMinutes() + minutes);
-    date.setSeconds(date.getSeconds() + seconds);
-    endTime = date;
-    
-    interval = setInterval(startTimer, 1000);
+    worker.postMessage('start');
     buttonStart.classList.add('blocked');
-    timerWorking = true;
 }
 
 buttonStop.onclick = function () {
-    clearInterval(interval);
-    minutes = timeRemaining.getMinutes();
-    seconds = timeRemaining.getSeconds();
+    worker.postMessage('stop');
     buttonStart.classList.remove('blocked');
-    timerWorking = false;
 }
 
 buttonPomodoro.onclick = function () {
@@ -139,34 +133,35 @@ longBreakTime.addEventListener('keypress', (e) => {
     }
 });
 
-//Function startTimer.
-function startTimer() {
-    if(!(timeRemaining.setHours(endTime.getHours() - new Date().getHours()) == 0 && timeRemaining.setMinutes(endTime.getMinutes() - new Date().getMinutes()) == 0 && timeRemaining.setSeconds(endTime.getSeconds() - new Date().getSeconds()) == 0)){
-        timeRemaining.setHours(endTime.getHours() - new Date().getHours());
-        timeRemaining.setMinutes(endTime.getMinutes() - new Date().getMinutes());
-        timeRemaining.setSeconds(endTime.getSeconds() - new Date().getSeconds());
-    }
-    
-    if (timeRemaining.getSeconds() <= 9) {
-        displaySeconds.innerHTML = "0" + timeRemaining.getSeconds();
-    }
-    
-    if (timeRemaining.getSeconds() > 9) {
-        displaySeconds.innerHTML = timeRemaining.getSeconds();
-    }
-    
-    if (timeRemaining.getMinutes() > 9) {
-        displayMinutes.innerHTML = timeRemaining.getMinutes();
-    }
-    
-    if (timeRemaining.getMinutes() <= 9) {
-        displayMinutes.innerHTML = "0" + timeRemaining.getMinutes();
+function updateTimer(data) {
+    let {time, timeIsOver} = data;
+
+    try{
+        display(time.getMinutes(), time.getSeconds());
+    }catch(error){
+        display(minutes, seconds);
     }
 
-    if (timeRemaining.getHours() == 0 && timeRemaining.getMinutes() == 0 && timeRemaining.getSeconds() == 0) {
-        timerWorking = false;
+    function display(min, s) {
+        if (s <= 9) {
+            displaySeconds.innerHTML = "0" + s;
+        }
+    
+        if (s > 9) {
+            displaySeconds.innerHTML = s;
+        }
+    
+        if (min > 9) {
+            displayMinutes.innerHTML = min;
+        }
+    
+        if (min <= 9) {
+            displayMinutes.innerHTML = "0" + min;
+        }
+    }
+
+    if (timeIsOver) {
         notification.play();
-        clearInterval(interval);
         
         if (option == 0 && pomodoros < 3) {
             buttonShortBreak.onclick();
@@ -183,14 +178,6 @@ function startTimer() {
 // Switch between Pomodoro, short break and long break.
 function switchMode(option) {
     buttonStart.classList.remove('blocked');
-    timerWorking = false;
-    seconds = 0;
-
-    try{
-        timeRemaining.setSeconds(0);
-    }catch(error){
-        // pass
-    }
 
     switch (option) {
         case 0:
@@ -205,17 +192,12 @@ function switchMode(option) {
             break;
     }
 
-    if (minutes < 10) {
-        displayMinutes.innerHTML = "0" + minutes;
-    } else {
-        displayMinutes.innerHTML = minutes;
+    let postData = {
+        msg: 'switchMode',
+        minutes: minutes
     }
 
-    try{
-        displaySeconds.innerHTML = "0" + timeRemaining.getSeconds();
-    }catch(error){
-        // pass
-    }
+    worker.postMessage(postData);
 }
 
 // Confirm the change between the modes (Pomodoro, short break and long break).
@@ -228,13 +210,13 @@ function confirmSwitchMode(option) {
             switchMode(option);
             return true;
         } else {
-            clearInterval(interval);
+            worker.postMessage('stop');
 
             if (confirm('Your timer is running, would you like to switch it?')) {
                 switchMode(option);
                 return true;
             } else {
-                interval = setInterval(startTimer, 1000);
+                worker.postMessage('start');
                 return false;
             }
         }
