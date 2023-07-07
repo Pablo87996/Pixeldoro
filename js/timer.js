@@ -231,3 +231,14 @@ function timesToInt() {
     shortBreakTime.value = parseInt(shortBreakTime.value);
     longBreakTime.value = parseInt(longBreakTime.value);
 }
+
+// Keep page alive
+setInterval(() => {
+    const event = new MouseEvent('click', {
+        bubbles: true,
+        cancelable: true,
+        view: window
+    });
+
+    displayMinutes.dispatchEvent(event);
+}, 5000);
