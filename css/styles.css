@@ -138,6 +138,14 @@ header nav {
     width: 100%;
 }
 
+.message-pop-up iframe {
+    margin: 5% 0;
+}
+
+.message-pop-up h4 {
+    font-size: 1.9rem;
+}
+
 #button-close-3 {
     align-self: end;
     margin: 0;
