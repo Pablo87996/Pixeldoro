@@ -5,16 +5,19 @@ const buttonStop = document.getElementById("button-stop");
 const buttonPomodoro = document.getElementById("button-pomodoro");
 const buttonShortBreak = document.getElementById("button-short-break");
 const buttonLongBreak = document.getElementById("button-long-break");
+const startBreak = document.getElementById("start-break");
 const buttonSettings = document.getElementById('button-settings');
 const settings = document.getElementById('settings');
 const blur = document.getElementById('blur');
 const popUp = document.getElementById('pop-up');
 const buttonClose = document.getElementById('button-close');
+const buttonClose3 = document.getElementById('button-close-3');
 const pomodoroTime = document.getElementById('pomodoro-time');
 const shortBreakTime = document.getElementById('short-break-time');
 const longBreakTime = document.getElementById('long-break-time');
 const notification = document.getElementById('notification');
 const lofi = document.getElementById('lo-fi');
+const messagePopUp = document.querySelector('.message-pop-up');
 let option = 0;
 let pomodoros = 0;
 let timerWorking = false;
@@ -133,6 +136,18 @@ longBreakTime.addEventListener('keypress', (e) => {
     }
 });
 
+buttonClose3.onclick = () => {
+    messagePopUp.classList.remove('active');
+    blur.classList.remove('active');
+}
+
+startBreak.onclick = () => {
+    messagePopUp.classList.remove('active');
+    blur.classList.remove('active');
+
+    buttonStart.onclick();
+}
+
 function updateTimer(data) {
     let {time, timeIsOver} = data;
 
@@ -166,9 +181,13 @@ function updateTimer(data) {
         if (option == 0 && pomodoros < 3) {
             buttonShortBreak.onclick();
             pomodoros++;
+            messagePopUp.classList.add('active');
+            blur.classList.add('active');
         } else if (option == 0 && pomodoros == 3) {
             buttonLongBreak.onclick();
             pomodoros = 0;
+            messagePopUp.classList.add('active');
+            blur.classList.add('active');
         } else {
             buttonPomodoro.onclick();
         }
@@ -231,3 +250,9 @@ function timesToInt() {
     shortBreakTime.value = parseInt(shortBreakTime.value);
     longBreakTime.value = parseInt(longBreakTime.value);
 }
+
+function showPopUp() {
+    
+}
+
+showPopUp();
