@@ -80,15 +80,25 @@ header nav {
     justify-content: center;
 }
 
-.timer-container button {
+.timer-container button, .message-pop-up button:last-child {
     color: black;
     margin-left: 1%;
     margin-right: 1%;
     font-family: PixelEmulator;
 }
 
+.message-pop-up button:last-child {
+    background-color: #43aa8b;
+    color: #FFF;
+    font-size: 2em;
+}
+
+.message-pop-up button:last-child:hover {
+    background-color: #3c967b;
+}
+
 #blur.active {
-    filter: blur(20px);
+    filter: blur(10px);
     pointer-events: none;
     user-select: none;
 }
@@ -100,7 +110,7 @@ header nav {
     transform: translate(-50%, -50%);
     width: 60%;
     padding: 40px;
-    box-shadow: 0 5px 30px black;
+    box-shadow: 0 2px 10px black;
     background-color: #90be6d;
     visibility: hidden;
     opacity: 0;
@@ -110,6 +120,27 @@ header nav {
     visibility: visible;
     opacity: 1;
     top: 50%;
+}
+
+.message-pop-up {
+    top: 40%;
+    min-width: 40%;
+    width: fit-content;
+    padding: 30px;
+    box-shadow: 0 2px 10px black;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.message-pop-up hr, .message-pop-up .bar {
+    width: 100%;
+}
+
+#button-close-3 {
+    align-self: end;
+    margin: 0;
 }
 
 .settings {
