@@ -17,6 +17,11 @@ body {
     overflow: overlay;
 }
 
+h1 {
+    margin: 0 !important;
+    font-size: 2.1rem !important;
+}
+
 #blur {
     display: flex;
     min-height: 100vh;
@@ -376,6 +381,8 @@ button:hover {
 .header {
     display: flex;
     align-items: center;
+    color: #FFF;
+    width: min-content;
     padding: 11.5px 0;
 }
 
@@ -474,8 +481,10 @@ hr {
 
 .responsive-nav {
     display: flex;
-    gap: 10px;
     justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    height: 100%;
 }
 
 .sidenav-trigger {
