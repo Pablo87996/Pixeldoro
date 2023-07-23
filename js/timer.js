@@ -30,7 +30,7 @@ pomodoroTime.value = 25;
 shortBreakTime.value = 5;
 longBreakTime.value = 15;
 
-const worker = new Worker('./js/worker.js');
+const worker = new Worker('/js/worker.js');
 
 worker.onmessage = (e) => {
     let data = e.data;
