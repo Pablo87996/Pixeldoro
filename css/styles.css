@@ -19,7 +19,6 @@ body {
 
 h1 {
     margin: 0 !important;
-    font-size: 2.1rem !important;
 }
 
 #blur {
@@ -186,8 +185,12 @@ label span {
 }
 
 .subpage-content {
-    padding: 0 3%;
+    padding: 3%;
     width: 100%;
+}
+
+.subpage-content h1 {
+    font-size: 3.0rem !important;
 }
 
 .subpage a {
@@ -386,8 +389,8 @@ button:hover {
     padding: 11.5px 0;
 }
 
-.header h4 {
-    margin: 0;
+.header, .header h1 {
+    font-size: 2.1rem;
 }
 
 .header img {

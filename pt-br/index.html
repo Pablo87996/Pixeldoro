@@ -5,10 +5,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Pablo Santos">
-    <meta name="description" content="O Pixeldoro é um timer customizado para utilização da Técnica Pomodoro, 
+    <meta name="description" content="O Pixeldoro é um temporizador customizado para utilização da Técnica Pomodoro, 
         um método de estudos que visa a produtividade.">
-    <meta name="keywords" content="Pomodoro, Timer, Pixeldoro, Space">
+    <meta name="keywords" content="Pomodoro, Timer, Pixeldoro, Space, Pixel art">
     <meta http-equiv="content-language" content="pt-br">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Pixeldoro | Pomodoro Timer"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="https://pixeldoro.netlify.app/pt-br/"/>
+    <meta property="og:image" content="./img/pomodoro_1024x1024.png"/>
+    <meta property="og:description" content="Temporizador customizado para utilização da Técnica Pomodoro. Aumente a sua produtividade e gerencie as suas tarefas."/>
+    <meta property="og:locale" content="pt_BR"/>
+
+    <link rel="canonical" href="https://pixeldoro.netlify.app/pt-br/">
     <link rel="stylesheet" href="../css/styles.css" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="../css/materialize.min.css" media="screen,projection" />
@@ -45,7 +55,7 @@
             <nav>
                 <div class="nav-wrapper">
                     <ul id="nav-mobile" class="right hide-on-med-and-down">
-                        <li><a href="./sobre.html" target="_blank">Sobre</a></li>
+                        <li><a href="https://pixeldoro.netlify.app/pt-br/sobre" target="_blank">Sobre</a></li>
                         <li><a id="versiculo">Versículos</a></li>
                         <li><a id="settings">Configurações</a></li>
                         <!-- <li><a href="https://www.highcpmrevenuenetwork.com/i620y7rg1?key=23bc4f9a7e8e28270ad1136a9877e4bc" target="_blank">Ajude-nos</a></li> -->
@@ -55,7 +65,7 @@
                     </ul>
                     <div class="responsive-nav">
                         <a href="#" class="header">
-                            <img src="/img/pomodoro_1024x1024.png">
+                            <img src="/img/pomodoro_1024x1024.png" alt="Pixeldoro-logo">
                             <h1>Pixeldoro</h1>
                         </a>
 
@@ -68,7 +78,7 @@
             <ul id="slide-out" class="sidenav">
                 <li><a id="responsive-settings"><i class="material-icons">settings</i>Configurações</a></li>
                 <li><a id="responsive-versiculo"><i class="material-icons">book</i>Versículos</a></li>
-                <li><a href="./sobre.html" target="_blank"><i class="material-icons">announcement</i>Sobre</a></li>
+                <li><a href="https://pixeldoro.netlify.app/pt-br/sobre" target="_blank"><i class="material-icons">announcement</i>Sobre</a></li>
                 <!-- <li><a href="https://www.highcpmrevenuenetwork.com/i620y7rg1?key=23bc4f9a7e8e28270ad1136a9877e4bc" target="_blank"><i class="material-icons">favorite</i>Ajude-nos</a></li> -->
             </ul>
         </header>
@@ -142,7 +152,7 @@
                     <div class="col l3 offset-l1 s12">
                         <h5 class="white-text">Projetos</h5>
                         <ul>
-                            <li><a class="grey-text text-lighten-3" href="https://pixeldoro.netlify.app">Pixeldoro</a></li>
+                            <li><a class="grey-text text-lighten-3" href="https://pixeldoro.netlify.app/pt-br/">Pixeldoro</a></li>
                             <li><a class="grey-text text-lighten-3" href="https://space-math.blogspot.com"
                                     target="_blank">Space Math</a></li>
                             <li><a class="grey-text text-lighten-3" href="https://spacestorage.netlify.app"
@@ -153,14 +163,21 @@
                     <div class="col l3 offset-l1 s12">
                         <h5>Contatos</h5>
                         <ul class="contacts">
-                            <li><a class="grey-text text-lighten-3" href="https://www.instagram.com/space_01_official/"
-                                    target="_blank">
-                                    <ion-icon name="logo-instagram"></ion-icon> @space_01_official
-                                </a></li>
-
-                            <li><a class="grey-text text-lighten-3" href="mailto:spaceprojects01@gmail.com">
-                                    <ion-icon name="mail"></ion-icon>spaceprojects01@gmail.com
-                                </a></li>
+                            <li><a class="grey-text text-lighten-3" href="https://www.instagram.com/space_01_official/" target="_blank" rel="me">
+                                <ion-icon name="logo-instagram"></ion-icon> Instagram
+                            </a></li>
+    
+                            <li><a class="grey-text text-lighten-3" href="https://facebook.com/space01official" target="_blank" rel="me">
+                                <ion-icon name="logo-facebook"></ion-icon> Facebook
+                            </a></li>
+    
+                            <li><a class="grey-text text-lighten-3" href="https://github.com/Pablo87996/Pixeldoro" target="_blank" rel="me">
+                                <ion-icon name="logo-github"></ion-icon> GitHub
+                            </a></li>
+    
+                            <li><a class="grey-text text-lighten-3" href="mailto:spaceprojects01@gmail.com" rel="nofollow">
+                                <ion-icon name="mail"></ion-icon> E-mail
+                            </a></li>
                         </ul>
                     </div>
                 </div>
@@ -168,9 +185,9 @@
             <div class="footer-copyright">
                 <div class="container">
                     © 2021 Pixeldoro
-                    <a class="grey-text text-lighten-4 right" href="./privacidade.html" target="_blank">Política de
+                    <a class="grey-text text-lighten-4 right" href="https://pixeldoro.netlify.app/pt-br/privacidade" target="_blank">Política de
                         Privacidade</a>
-                    <a class="grey-text text-lighten-4 right" href="./termos.html" target="_blank">Termos e
+                    <a class="grey-text text-lighten-4 right" href="https://pixeldoro.netlify.app/pt-br/termos" target="_blank">Termos e
                         Condições</a>
                 </div>
             </div>
