@@ -184,6 +184,21 @@ label span {
     word-wrap: break-word;
 }
 
+.subpage li {
+    all: revert !important;
+    margin: 14px 0 !important;
+}
+
+.subpage ul {
+    all: revert !important;
+    padding-left: 15px !important;
+}
+
+.subpage ol {
+    all: revert !important;
+    padding-left: 25px !important;
+}
+
 .subpage-content {
     padding: 3%;
     width: 100%;
@@ -194,6 +209,11 @@ label span {
 }
 
 .subpage a {
+    color: #FFF !important;
+    text-decoration: underline;
+}
+
+.subpage a:hover {
     color: #90be6d !important;
 }
 
