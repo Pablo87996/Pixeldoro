@@ -1,27 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?> 
 <urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
-<url>
-  <loc>https://pixeldoro.netlify.app</loc>
-</url>
-<url>
-  <loc>https://pixeldoro.netlify.app/about</loc>
-</url>
-<url>
-  <loc>https://pixeldoro.netlify.app/privacy</loc>
-</url>
-<url>
-  <loc>https://pixeldoro.netlify.app/terms</loc>
-</url>
-<url>
-  <loc>https://pixeldoro.netlify.app/pt-br/</loc>
-</url>
-<url>
-  <loc>https://pixeldoro.netlify.app/pt-br/sobre</loc>
-</url>
-<url>
-  <loc>https://pixeldoro.netlify.app/pt-br/privacidade</loc>
-</url>
-<url>
-  <loc>https://pixeldoro.netlify.app/pt-br/termos</loc>
-</url>
+	<url>
+		<loc>https://pixeldoro.netlify.app</loc>
+		<lastmod>2024-01-15</lastmod>
+	</url>
+	<url>
+		<loc>https://pixeldoro.netlify.app/about</loc>
+		<lastmod>2024-01-15</lastmod>
+	</url>
+	<url>
+		<loc>https://pixeldoro.netlify.app/privacy</loc>
+		<lastmod>2024-01-15</lastmod>
+	</url>
+	<url>
+		<loc>https://pixeldoro.netlify.app/terms</loc>
+		<lastmod>2024-01-15</lastmod>
+	</url>
+	<url>
+		<loc>https://pixeldoro.netlify.app/pt-br/</loc>
+		<lastmod>2024-01-15</lastmod>
+	</url>
+	<url>
+		<loc>https://pixeldoro.netlify.app/pt-br/sobre</loc>
+		<lastmod>2024-01-15</lastmod>
+	</url>
+	<url>
+		<loc>https://pixeldoro.netlify.app/pt-br/privacidade</loc>
+		<lastmod>2024-01-15</lastmod>
+	</url>
+	<url>
+		<loc>https://pixeldoro.netlify.app/pt-br/termos</loc>
+		<lastmod>2024-01-15</lastmod>
+	</url>
 </urlset>
