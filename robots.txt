@@ -1,0 +1,1 @@
+Sitemap: https://pixeldoro.netlify.app/sitemap.xml
