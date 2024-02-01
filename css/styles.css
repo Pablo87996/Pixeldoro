@@ -1,8 +1,3 @@
-@font-face {
-    font-family: PixelEmulator;
-    src: url("./fonts/PixelEmulator.ttf");
-}
-
 * {
     box-sizing: border-box !important;
 }
@@ -19,6 +14,29 @@ body {
 
 h1 {
     margin: 0 !important;
+}
+
+.native-banners {
+    display: flex;
+    justify-content: center;
+}
+
+.native-banners li {
+    padding: 10px;
+}
+
+.native-banners-title {
+    background-color: #43aa8b;
+    border-top: 2px solid black;
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+    margin-top: 20px;
+    padding-left: 20px !important;
+}
+
+.native-banners-content {
+    background-color: #90be6d;
+    border: 2px solid black;
 }
 
 #blur {
@@ -414,7 +432,7 @@ button:hover {
 }
 
 .header img {
-    height: 48px;
+    aspect-ratio: auto 1/1;
     margin-right: 10px;
 }
 
@@ -575,7 +593,7 @@ hr {
     padding-bottom: 30px;
 
     display: grid;
-    grid-template-columns: 8fr 9fr;
+    grid-template-columns: 8fr 1fr 8fr;
     min-height: 100vh;
 }
 
