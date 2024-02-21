@@ -11,7 +11,7 @@ if (localStorage.getItem("completedTasks") == null) {
     localStorage.setItem("completedTasks", 0);
 } else {
     completedTasks = localStorage.getItem("completedTasks");
-    displayCompletedTasks.innerHTML = completedTasks;
+    displayCompletedTasks.textContent = completedTasks;
 }
 
 //Verificação de tarefas (tasks) ativas:
@@ -108,13 +108,13 @@ function createTagLI(task, ul) {
 
     var span = document.createElement('span');
     span.classList.add('text-task');
-    span.innerHTML = task.name;
+    span.textContent = task.name;
 
     var div = document.createElement('div');
 
     var buttonDelete = document.createElement('button');
     buttonDelete.classList.add('button-action');
-    buttonDelete.innerHTML = '❌';
+    buttonDelete.textContent = '❌';
     buttonDelete.onclick = function () {
         var confirmacao = window.confirm('A tarefa será deletada!')
         if (confirmacao) {
@@ -124,13 +124,13 @@ function createTagLI(task, ul) {
 
     var buttonCheck = document.createElement('button');
     buttonCheck.classList.add('button-action');
-    buttonCheck.innerHTML = '✔️';
+    buttonCheck.textContent = '✔️';
     buttonCheck.onclick = function () {
         removeTask(task, toDoList);
 
         completedTasks++;
         localStorage.setItem("completedTasks", completedTasks);
-        displayCompletedTasks.innerHTML = completedTasks;
+        displayCompletedTasks.textContent = completedTasks;
     }
 
     div.appendChild(buttonDelete);
