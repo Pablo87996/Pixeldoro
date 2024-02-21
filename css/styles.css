@@ -102,6 +102,23 @@ header nav {
     justify-content: center;
 }
 
+.timer-footer {
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+}
+
+.timer-footer p {
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    gap: 2%;
+}
+
+#pomodoro-counter {
+    font-size: 20px;
+}
+
 .timer-container button, .message-pop-up button:last-child {
     color: black;
     margin-left: 1%;

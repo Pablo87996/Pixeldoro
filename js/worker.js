@@ -1,5 +1,5 @@
-let minutes = 25;
-let seconds = 0;
+// let minutes = 25;
+// let seconds = 0;
 let interval;
 let date;
 let timeRemaining = null;
@@ -12,12 +12,12 @@ let data = {
 }
 
 self.onmessage = (e) => {
-    if(e.data == 'start'){
+    if(e.data.msg == 'start'){
         date = new Date();
         timeRemaining = new Date();
 
-        date.setMinutes(date.getMinutes() + minutes);
-        date.setSeconds(date.getSeconds() + seconds);
+        date.setMinutes(date.getMinutes() + e.data.min);
+        date.setSeconds(date.getSeconds() + e.data.s);
 
         endTime = date;
         working = true;
@@ -26,7 +26,7 @@ self.onmessage = (e) => {
     }else if(e.data == 'stop'){
         stopTimer();
     }else if(e.data.msg == 'switchMode'){
-        switchMode(e.data.minutes);
+        switchMode(e.data.min);
     }
 }
 

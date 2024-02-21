@@ -18,13 +18,15 @@ const longBreakTime = document.getElementById('long-break-time');
 const notification = document.getElementById('notification');
 const lofi = document.getElementById('lo-fi');
 const messagePopUp = document.querySelector('.message-pop-up');
-let option = 0;
+const pomodoroCounter = document.querySelector('#pomodoro-counter');
+let mode = 0;
 let pomodoros = 0;
 let timerWorking = false;
 let tmpTimes = null;
 let timeRemaining = null;
 let minutes = 25;
 let seconds = 0;
+let config;
 
 pomodoroTime.value = 25;
 shortBreakTime.value = 5;
@@ -32,16 +34,55 @@ longBreakTime.value = 15;
 
 const worker = new Worker('/js/worker.js');
 
+// Local Storage
+if(localStorage.getItem('timerConfig') == null) {
+    localStorage.setItem('timerConfig', JSON.stringify({
+        pomodoro: pomodoroTime.value,
+        shortBreak: shortBreakTime.value,
+        longBreak: longBreakTime.value,
+        currentTime: new Date(1500000),
+        currentMode: 0,
+        pomodoros: 0
+    }));
+
+    config = JSON.parse(localStorage.getItem('timerConfig'));
+}else{
+    config = JSON.parse(localStorage.getItem('timerConfig'));
+    config.currentTime = new Date(Date.parse(config.currentTime));
+
+    pomodoroTime.value = config.pomodoro;
+    shortBreakTime.value = config.shortBreak;
+    longBreakTime.value = config.longBreak;
+    minutes = config.currentTime.getMinutes();
+    seconds = config.currentTime.getSeconds();
+    mode = config.currentMode;
+    pomodoros = config.pomodoros;
+}
+
+display(minutes, seconds);
+pomodoroCounter.textContent = config.pomodoros + 1;
+
 worker.onmessage = (e) => {
     let data = e.data;
 
     timerWorking = data.working;
     updateTimer(e.data);
+
+    config.currentTime = data.time;
+    minutes = data.time.getMinutes();
+    seconds = data.time.getSeconds();
+    localStorage.setItem('timerConfig', JSON.stringify(config));
 }
 
 //Buttons
 buttonStart.onclick = function () {
-    worker.postMessage('start');
+    let data = {
+        msg: 'start',
+        min: minutes,
+        s: seconds
+    }
+
+    worker.postMessage(data);
     buttonStart.classList.add('blocked');
 }
 
@@ -51,18 +92,15 @@ buttonStop.onclick = function () {
 }
 
 buttonPomodoro.onclick = function () {
-    option = 0;
-    confirmSwitchMode(option);
+    confirmSwitchMode(0);
 }
 
 buttonShortBreak.onclick = function () {
-    option = 1;
-    confirmSwitchMode(option);
+    confirmSwitchMode(1);
 }
 
 buttonLongBreak.onclick = function () {
-    option = 2;
-    confirmSwitchMode(option);
+    confirmSwitchMode(2);
 }
 
 settings.onclick = function () {
@@ -75,7 +113,7 @@ settings.onclick = function () {
         let isLessThanSixty = pomodoroTime.value < 60 && shortBreakTime.value < 60 && longBreakTime.value < 60;
         let isInteger = pomodoroTime.value % 1 === 0 && shortBreakTime.value % 1 === 0 && longBreakTime.value % 1 === 0;
 
-        if (isInteger) {
+        if(isInteger) {
             timesToInt();
 
             if (isPositive && isLessThanSixty) {
@@ -85,15 +123,21 @@ settings.onclick = function () {
                         shortBreakTime.value = tmpTimes[1];
                         longBreakTime.value = tmpTimes[2];
                         tmpTimes = null;
+                    }else{
+                        config.pomodoro = pomodoroTime.value;
+                        config.shortBreak = shortBreakTime.value;
+                        config.longBreak = longBreakTime.value;
+
+                        localStorage.setItem('timerConfig', JSON.stringify(config));
                     }
                 }
 
                 blur.classList.toggle('active');
                 popUp.classList.toggle('active');
-            } else {
+            }else{
                 alert("The values must be less than or equal to 59.");
             }
-        } else {
+        }else{
             alert("The values must be integers.");
         }
     }
@@ -157,40 +201,42 @@ function updateTimer(data) {
         display(minutes, seconds);
     }
 
-    function display(min, s) {
-        if (s <= 9) {
-            displaySeconds.innerHTML = "0" + s;
-        }
-    
-        if (s > 9) {
-            displaySeconds.innerHTML = s;
-        }
-    
-        if (min > 9) {
-            displayMinutes.innerHTML = min;
-        }
-    
-        if (min <= 9) {
-            displayMinutes.innerHTML = "0" + min;
-        }
-    }
-
     if (timeIsOver) {
         notification.play();
         
-        if (option == 0 && pomodoros < 3) {
+        if (mode == 0 && pomodoros < 3) {
             buttonShortBreak.onclick();
             pomodoros++;
+            config.pomodoros+=1;
             messagePopUp.classList.add('active');
             blur.classList.add('active');
-        } else if (option == 0 && pomodoros == 3) {
+        } else if (mode == 0 && pomodoros == 3) {
             buttonLongBreak.onclick();
             pomodoros = 0;
+            config.pomodoros = 0;
             messagePopUp.classList.add('active');
             blur.classList.add('active');
         } else {
             buttonPomodoro.onclick();
         }
+    }
+}
+
+function display(min, s) {
+    if (s <= 9) {
+        displaySeconds.innerHTML = "0" + s;
+    }
+
+    if (s > 9) {
+        displaySeconds.innerHTML = s;
+    }
+
+    if (min > 9) {
+        displayMinutes.innerHTML = min;
+    }
+
+    if (min <= 9) {
+        displayMinutes.innerHTML = "0" + min;
     }
 }
 
@@ -201,6 +247,7 @@ function switchMode(option) {
     switch (option) {
         case 0:
             minutes = parseInt(pomodoroTime.value);
+            pomodoroCounter.textContent = config.pomodoros + 1;
             break;
         case 1:
             minutes = parseInt(shortBreakTime.value);
@@ -211,9 +258,11 @@ function switchMode(option) {
             break;
     }
 
+    seconds = 0;
+
     let postData = {
         msg: 'switchMode',
-        minutes: minutes
+        min: minutes
     }
 
     worker.postMessage(postData);
@@ -226,6 +275,7 @@ function confirmSwitchMode(option) {
 
     if (isInteger) {
         if (!timerWorking) {
+            mode = option;
             switchMode(option);
             return true;
         } else {
@@ -233,9 +283,16 @@ function confirmSwitchMode(option) {
 
             if (confirm('Your timer is running, would you like to switch it?')) {
                 switchMode(option);
+                mode = option;
                 return true;
             } else {
-                worker.postMessage('start');
+                let data = {
+                    msg: 'start',
+                    min: minutes,
+                    s: seconds
+                }
+            
+                worker.postMessage(data);
                 return false;
             }
         }
@@ -251,8 +308,8 @@ function timesToInt() {
     longBreakTime.value = parseInt(longBreakTime.value);
 }
 
-function showPopUp() {
+// function showPopUp() {
     
-}
+// }
 
-showPopUp();
+// showPopUp();
