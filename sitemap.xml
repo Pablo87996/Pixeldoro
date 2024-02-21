@@ -1,27 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?> 
-<urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
-<url>
-  <loc>https://pixeldoro.netlify.app</loc>
-</url>
-<url>
-  <loc>https://pixeldoro.netlify.app/./about.html</loc>
-</url>
-<url>
-  <loc>https://pixeldoro.netlify.app/./privacy.html</loc>
-</url>
-<url>
-  <loc>https://pixeldoro.netlify.app/./terms.html</loc>
-</url>
-<url>
-  <loc>https://pixeldoro.netlify.app/pt-br/index.html</loc>
-</url>
-<url>
-  <loc>https://pixeldoro.netlify.app/pt-br/sobre.html</loc>
-</url>
-<url>
-  <loc>https://pixeldoro.netlify.app/pt-br/privacidade.html</loc>
-</url>
-<url>
-  <loc>https://pixeldoro.netlify.app/pt-br/termos.html</loc>
-</url>
+<urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+	<url>
+		<loc>https://pixeldoro.netlify.app</loc>
+		<lastmod>2024-02-15T13:37:00Z</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://pixeldoro.netlify.app"/>
+		<xhtml:link rel="alternate" hreflang="pt-br" href="https://pixeldoro.netlify.app/pt-br/"/>
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://pixeldoro.netlify.app"/>
+	</url>
+	<url>
+		<loc>https://pixeldoro.netlify.app/about</loc>
+		<lastmod>2024-02-15T13:37:00Z</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://pixeldoro.netlify.app/about"/>
+		<xhtml:link rel="alternate" hreflang="pt-br" href="https://pixeldoro.netlify.app/pt-br/sobre"/>
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://pixeldoro.netlify.app/about"/>
+	</url>
+	<url>
+		<loc>https://pixeldoro.netlify.app/privacy</loc>
+		<lastmod>2024-02-15T13:37:00Z</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://pixeldoro.netlify.app/privacy"/>
+		<xhtml:link rel="alternate" hreflang="pt-br" href="https://pixeldoro.netlify.app/pt-br/privacidade"/>
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://pixeldoro.netlify.app/privacy"/>
+	</url>
+	<url>
+		<loc>https://pixeldoro.netlify.app/terms</loc>
+		<lastmod>2024-02-15T13:37:00Z</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://pixeldoro.netlify.app/terms"/>
+		<xhtml:link rel="alternate" hreflang="pt-br" href="https://pixeldoro.netlify.app/pt-br/termos"/>
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://pixeldoro.netlify.app/terms"/>
+	</url>
+	<url>
+		<loc>https://pixeldoro.netlify.app/pt-br/</loc>
+		<lastmod>2024-02-15T13:37:00Z</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://pixeldoro.netlify.app"/>
+		<xhtml:link rel="alternate" hreflang="pt-br" href="https://pixeldoro.netlify.app/pt-br/"/>
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://pixeldoro.netlify.app"/>
+	</url>
+	<url>
+		<loc>https://pixeldoro.netlify.app/pt-br/sobre</loc>
+		<lastmod>2024-02-15T13:37:00Z</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://pixeldoro.netlify.app/about"/>
+		<xhtml:link rel="alternate" hreflang="pt-br" href="https://pixeldoro.netlify.app/pt-br/sobre"/>
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://pixeldoro.netlify.app/about"/>
+	</url>
+	<url>
+		<loc>https://pixeldoro.netlify.app/pt-br/privacidade</loc>
+		<lastmod>2024-02-15T13:37:00Z</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://pixeldoro.netlify.app/privacy"/>
+		<xhtml:link rel="alternate" hreflang="pt-br" href="https://pixeldoro.netlify.app/pt-br/privacidade"/>
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://pixeldoro.netlify.app/privacy"/>
+	</url>
+	<url>
+		<loc>https://pixeldoro.netlify.app/pt-br/termos</loc>
+		<lastmod>2024-02-15T13:37:00Z</lastmod>
+		<xhtml:link rel="alternate" hreflang="en" href="https://pixeldoro.netlify.app/terms"/>
+		<xhtml:link rel="alternate" hreflang="pt-br" href="https://pixeldoro.netlify.app/pt-br/termos"/>
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://pixeldoro.netlify.app/terms"/>
+	</url>
 </urlset>

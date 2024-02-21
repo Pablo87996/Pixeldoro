@@ -5,15 +5,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Pablo Santos">
-    <meta name="description"
-        content="The Pixeldoro is a custom timer for the use of the Pomodoro Technique, a method that aims the productivity.">
-    <meta name="keywords" content="Pomodoro, Timer, Pixeldoro, Space">
+    <meta name="description" content="The Pixeldoro is a Pixel Art timer for the use of the Pomodoro Technique, a study method to boost the productivity and tasks management.">
+    <meta name="keywords" content="Pomodoro, timer, Pixeldoro, Space, pixel art, Pomodoro technique, Pomodoro method, tracker, online">
     <meta http-equiv="content-language" content="en">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Pixeldoro | Pomodoro Timer"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="https://pixeldoro.netlify.app"/>
+    <meta property="og:image" content="https://pixeldoro.netlify.app/img/pixeldoro.png"/>
+    <meta property="og:description" content="The Pixeldoro is a Pixel Art timer for the use of the Pomodoro Technique, a study method to boost the productivity and tasks management."/>
+    <meta property="og:locale" content="en_US"/>
+
+    <style>
+        @font-face {
+            font-family: PixelEmulator;
+            src: url("/css/fonts/PixelEmulator.ttf");
+        }
+
+        @font-face {
+            font-family: 'Material Icons';
+            font-style: normal;
+            font-weight: 400;
+            src: url(https://fonts.gstatic.com/s/materialicons/v140/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2) format('woff2');
+        }
+
+        .material-icons {
+            font-family: 'Material Icons';
+            font-weight: normal;
+            font-style: normal;
+            font-size: 24px;
+            line-height: 1;
+            letter-spacing: normal;
+            text-transform: none;
+            display: inline-block;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            -webkit-font-smoothing: antialiased;
+        }
+    </style>
+
+    <link rel="canonical" href="https://pixeldoro.netlify.app/">
     <link rel="stylesheet" href="./css/styles.css" />
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
     <link type="text/css" rel="stylesheet" href="./css/materialize.min.css" media="screen,projection" />
     <link rel="icon" href="./img/pomodoro.png">
-    <title>Pixeldoro | Pomodoro Timer</title>
+    <title>Pixeldoro | Pomodoro Timer Online</title>
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-NXTEEYEN5W"></script>
@@ -45,22 +83,21 @@
             <nav>
                 <div class="nav-wrapper">
                     <ul id="nav-mobile" class="right hide-on-med-and-down">
-                        <li><a href="./about.html" target="_blank">About</a></li>
+                        <li><a href="https://pixeldoro.netlify.app/about" target="_blank">About</a></li>
                         <li><a id="versiculo">Verses</a></li>
                         <li><a id="settings">Settings</a></li>
-                        <li><a href="https://www.highcpmrevenuenetwork.com/i620y7rg1?key=23bc4f9a7e8e28270ad1136a9877e4bc"
-                                target="_blank">Support Me</a></li>
+                        <li><a href="https://www.paypal.com/donate/?hosted_button_id=W525VH33KQ6AE" rel="nofollow" target="_blank">Support me</a></li>
 
                         <!-- Dropdown Trigger -->
-                        <li><a class="dropdown-trigger" href="#!" data-target="dropdown1"><img src="./img/en.png"
-                                    alt="pt-br" height="32px" width="32px">en<i
-                                    class="material-icons right">arrow_drop_down</i></a></li>
+                        <li><a class="dropdown-trigger" href="" data-target="dropdown1"><img src="./img/en.png" alt="pt-br" height="32px" width="32px">en<i class="material-icons right">arrow_drop_down</i></a></li>
                     </ul>
                     <div class="responsive-nav">
-                        <a href="#" class="brand-logo">Pixeldoro</a>
+                        <a href="#" class="header">
+                            <img src="/img/pomodoro_72x72.png" alt="Pixeldoro-logo" width="48" height="48">
+                            <h1>Pixeldoro</h1>
+                        </a>
 
-                        <a href="#" data-target="slide-out" class="sidenav-trigger"><ion-icon
-                                name="menu-sharp"></ion-icon></a>
+                        <a href="" data-target="slide-out" class="sidenav-trigger"><ion-icon name="menu-sharp"></ion-icon></a>
                     </div>
                 </div>
             </nav>
@@ -69,9 +106,8 @@
             <ul id="slide-out" class="sidenav">
                 <li><a id="responsive-settings"><i class="material-icons">settings</i>Settings</a></li>
                 <li><a id="responsive-versiculo"><i class="material-icons">book</i>Verses</a></li>
-                <li><a href="./about.html" target="_blank"><i class="material-icons">announcement</i>About</a></li>
-                <li><a href="https://www.highcpmrevenuenetwork.com/i620y7rg1?key=23bc4f9a7e8e28270ad1136a9877e4bc"
-                        target="_blank"><i class="material-icons">favorite</i>Support me</a></li>
+                <li><a href="https://pixeldoro.netlify.app/about" target="_blank"><i class="material-icons">announcement</i>About</a></li>
+                <li><a href="https://www.paypal.com/donate/?hosted_button_id=W525VH33KQ6AE" rel="nofollow" target="_blank"><i class="material-icons">favorite</i>Support me</a></li>
             </ul>
         </header>
 
@@ -127,6 +163,19 @@
                         </script>
                     </li>
                 </ul>
+
+                <!-- Used to create the grid layout correctly -->
+                <div></div>
+
+                <div class="native-banners">
+                    <ul>
+                        <li class="native-banners-title">Advertising</li>
+                        <li class="native-banners-content">
+                            <script async="async" data-cfasync="false" src="//pl18320234.toprevenuegate.com/9ac300d9d3254943b1cff5c3caf65961/invoke.js"></script>
+                            <div id="container-9ac300d9d3254943b1cff5c3caf65961"></div>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </main>
 
@@ -144,34 +193,40 @@
                     <div class="col l3 offset-l1 s12">
                         <h5 class="white-text">Projects</h5>
                         <ul>
-                            <li><a class="grey-text text-lighten-3" href="#">Pixeldoro</a></li>
-                            <li><a class="grey-text text-lighten-3" href="https://space-math.blogspot.com"
-                                    target="_blank">Space Math</a></li>
-                            <li><a class="grey-text text-lighten-3" href="https://spacestorage.netlify.app"
-                                    target="_blank">Space Storage</a></li>
+                            <li><a class="grey-text text-lighten-3" href="https://pixeldoro.netlify.app/about" target="_blank">Pixeldoro</a></li>
+                            <li><a class="grey-text text-lighten-3" href="https://pixeldoro.blogspot.com" target="_blank">Pixeldoro Blog</a></li>
+                            <li><a class="grey-text text-lighten-3" href="https://space-math.blogspot.com" target="_blank">Space Math</a></li>
+                            <li><a class="grey-text text-lighten-3" href="https://spacestorage.netlify.app" target="_blank">Space Storage</a></li>
                         </ul>
                     </div>
 
                     <div class="col l3 offset-l1 s12">
                         <h5>contacts</h5>
                         <ul class="contacts">
-                            <li><a class="grey-text text-lighten-3" href="https://www.instagram.com/space_01_official/"
-                                    target="_blank">
-                                    <ion-icon name="logo-instagram"></ion-icon> @space_01_official
-                                </a></li>
-
-                            <li><a class="grey-text text-lighten-3" href="mailto:spaceprojects01@gmail.com">
-                                    <ion-icon name="mail"></ion-icon>spaceprojects01@gmail.com
-                                </a></li>
+                            <li><a class="grey-text text-lighten-3" href="https://www.instagram.com/space_01_official/" target="_blank" rel="me">
+                                <ion-icon name="logo-instagram"></ion-icon> Instagram
+                            </a></li>
+    
+                            <li><a class="grey-text text-lighten-3" href="https://facebook.com/space01official" target="_blank" rel="me">
+                                <ion-icon name="logo-facebook"></ion-icon> Facebook
+                            </a></li>
+    
+                            <li><a class="grey-text text-lighten-3" href="https://github.com/Pablo87996/Pixeldoro" target="_blank" rel="me">
+                                <ion-icon name="logo-github"></ion-icon> GitHub
+                            </a></li>
+    
+                            <li><a class="grey-text text-lighten-3" href="mailto:spaceprojects01@gmail.com" rel="nofollow">
+                                <ion-icon name="mail"></ion-icon> E-mail
+                            </a></li>
                         </ul>
                     </div>
                 </div>
             </div>
             <div class="footer-copyright">
                 <div class="container">
-                    © 2021 Pixeldoro
-                    <a class="grey-text text-lighten-4 right" href="./privacy.html" target="_blank">Privacy Policy</a>
-                    <a class="grey-text text-lighten-4 right" href="./terms.html" target="_blank">Terms and
+                    © 2024 Pixeldoro
+                    <a class="grey-text text-lighten-4 right" href="https://pixeldoro.netlify.app/privacy" target="_blank">Privacy Policy</a>
+                    <a class="grey-text text-lighten-4 right" href="https://pixeldoro.netlify.app/terms" target="_blank">Terms and
                         Conditions</a>
                 </div>
             </div>
@@ -269,6 +324,7 @@
     <script src="./js/materialize.min.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script type="text/javascript">window.$sleek=[];window.SLEEK_PRODUCT_ID=879794219;(function(){d=document;s=d.createElement("script");s.src="https://client.sleekplan.com/sdk/e.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();</script> 
 </body>
 
 </html>
