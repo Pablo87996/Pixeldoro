@@ -39,58 +39,47 @@ if (localStorage.getItem("tasksOn") == null || localStorage.getItem("tasksOn") =
 
 inputNewTask.addEventListener('keypress', (e) => {
     if (e.keyCode == 13) {
-        var task = {
-            name: inputNewTask.value,
-            id: generateId(),
+        if(inputNewTask.value.trim() == '') {
+            alert('Escreva alguma coisa, por favor!');
+        }else{
+            addTask(toDoList);
         }
-        addTask(task, toDoList);
-
-        inputNewTask.value = '';
-        tasksOn++;
-        localStorage.setItem("tasksOn", tasksOn);
-
-        if (tasksOn <= 10) {
-            nameList.push(task.name);
-            idList.push(task.id);
-            localStorage.nameList = JSON.stringify(nameList);
-            localStorage.idList = JSON.stringify(idList);
-        }
-
     }
 });
 
 buttonNewTask.addEventListener('click', (e) => {
-    var task = {
-        name: inputNewTask.value,
-        id: generateId(),
+    if(inputNewTask.value.trim() == '') {
+        alert('Escreva alguma coisa, por favor!');
+    }else{
+        addTask(toDoList);
     }
-    addTask(task, toDoList);
-
-    inputNewTask.value = '';
-    tasksOn++;
-    localStorage.setItem("tasksOn", tasksOn);
-
-    nameList.push(task.name);
-    idList.push(task.id);
-    localStorage.nameList = JSON.stringify(nameList);
-    localStorage.idList = JSON.stringify(idList);
 });
 
 function generateId() {
     return Math.floor(Math.random() * 3000);
 }
 
-function addTask(task, ul) {
-    if (inputNewTask.value.trim() == '') {
-        alert('Escreva alguma coisa, por favor!');
-    } else {
-        if (tasksOn < 10) {
-            var li = createTagLI(task, ul);
-            ul.appendChild(li);
-        } else {
-            alert('Esse é o limite de tarefas.');
-            tasksOn = "Max";
-        }
+function addTask(ul) {
+    var task = {
+        name: inputNewTask.value,
+        id: generateId(),
+    }
+
+    if(tasksOn < 10) {
+        var li = createTagLI(task, ul);
+        ul.appendChild(li);
+
+        inputNewTask.value = '';
+        tasksOn++;
+        localStorage.setItem("tasksOn", tasksOn);
+
+        nameList.push(task.name);
+        idList.push(task.id);
+        localStorage.nameList = JSON.stringify(nameList);
+        localStorage.idList = JSON.stringify(idList);
+    }else{
+        alert('Esse é o limite de tarefas.');
+        tasksOn = "Max";
     }
 }
 
