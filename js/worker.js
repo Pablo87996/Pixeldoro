@@ -2,7 +2,7 @@
 // let seconds = 0;
 let interval;
 let date;
-let timeRemaining = null;
+let timeRemaining = new Date();
 let endTime;
 
 let data = {
@@ -53,26 +53,27 @@ function startTimer() {
 }
 
 function stopTimer() {
-    clearInterval(interval);
-    minutes = timeRemaining.getMinutes();
-    seconds = timeRemaining.getSeconds();
-    data.working = false;
-
-    self.postMessage(data);
+    if(interval) {
+        clearInterval(interval);
+        minutes = timeRemaining.getMinutes();
+        seconds = timeRemaining.getSeconds();
+        data.working = false;
+    
+        self.postMessage(data);
+    }
 }
 
 function switchMode(min) {
-    clearInterval(interval);
+    if(interval) {
+        clearInterval(interval);
+    }
+
     minutes = min;
     seconds = 0;
     data.working = false;
     
-    try{
-        timeRemaining.setMinutes(min);
-        timeRemaining.setSeconds(0);
-    }catch(error){
-        // pass
-    }
+    timeRemaining.setMinutes(min);
+    timeRemaining.setSeconds(0);
 
     self.postMessage(data);
 }

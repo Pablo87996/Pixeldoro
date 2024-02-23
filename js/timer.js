@@ -60,7 +60,22 @@ if(localStorage.getItem('timerConfig') == null) {
 }
 
 display(minutes, seconds);
-pomodoroCounter.textContent = config.pomodoros + 1;
+if(config.currentMode !== 0) {
+    pomodoroCounter.textContent = config.pomodoros;
+}
+
+switch(config.currentMode){
+    case 0:
+        pomodoroCounter.textContent = config.pomodoros + 1;
+        buttonPomodoro.classList.add('button-pressed');
+        break;
+    case 1:
+        buttonShortBreak.classList.add('button-pressed');
+        break;
+    case 2:
+        buttonLongBreak.classList.add('button-pressed');
+        break;
+}
 
 worker.onmessage = (e) => {
     let data = e.data;
@@ -68,9 +83,12 @@ worker.onmessage = (e) => {
     timerWorking = data.working;
     updateTimer(e.data);
 
-    config.currentTime = data.time;
-    minutes = data.time.getMinutes();
-    seconds = data.time.getSeconds();
+    if(data.time) {
+        config.currentTime = data.time;
+        minutes = data.time.getMinutes();
+        seconds = data.time.getSeconds();
+    }
+
     localStorage.setItem('timerConfig', JSON.stringify(config));
 }
 
@@ -101,6 +119,20 @@ buttonShortBreak.onclick = function () {
 
 buttonLongBreak.onclick = function () {
     confirmSwitchMode(2);
+}
+
+pomodoroCounter.onclick = function () {
+    if(pomodoros !== 0) {
+        pomodoros = 0;
+        config.pomodoros = 0;
+        localStorage.setItem('timerConfig', JSON.stringify(config));
+
+        if(mode === 0) {
+            pomodoroCounter.textContent = 1;
+        }else{
+            pomodoroCounter.textContent = 0;
+        }
+    }
 }
 
 settings.onclick = function () {
@@ -208,16 +240,19 @@ function updateTimer(data) {
             buttonShortBreak.onclick();
             pomodoros++;
             config.pomodoros+=1;
+            config.currentMode = 1;
             messagePopUp.classList.add('active');
             blur.classList.add('active');
         } else if (mode == 0 && pomodoros == 3) {
             buttonLongBreak.onclick();
             pomodoros = 0;
             config.pomodoros = 0;
+            config.currentMode = 2;
             messagePopUp.classList.add('active');
             blur.classList.add('active');
         } else {
             buttonPomodoro.onclick();
+            config.currentMode = 0;
         }
     }
 }
@@ -243,17 +278,21 @@ function display(min, s) {
 // Switch between Pomodoro, short break and long break.
 function switchMode(option) {
     buttonStart.classList.remove('blocked');
+    document.querySelector('.button-pressed').classList.remove('button-pressed');
 
     switch (option) {
         case 0:
             minutes = parseInt(pomodoroTime.value);
             pomodoroCounter.textContent = config.pomodoros + 1;
+            buttonPomodoro.classList.add('button-pressed');
             break;
         case 1:
             minutes = parseInt(shortBreakTime.value);
+            buttonShortBreak.classList.add('button-pressed');
             break;
         case 2:
             minutes = parseInt(longBreakTime.value);
+            buttonLongBreak.classList.add('button-pressed');
         default:
             break;
     }
@@ -276,6 +315,7 @@ function confirmSwitchMode(option) {
     if (isInteger) {
         if (!timerWorking) {
             mode = option;
+            config.currentMode = option;
             switchMode(option);
             return true;
         } else {
@@ -284,6 +324,7 @@ function confirmSwitchMode(option) {
             if (confirm('Your timer is running, would you like to switch it?')) {
                 switchMode(option);
                 mode = option;
+                config.currentMode = option;
                 return true;
             } else {
                 let data = {
