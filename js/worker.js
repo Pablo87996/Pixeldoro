@@ -1,8 +1,8 @@
-let minutes = 25;
-let seconds = 0;
+// let minutes = 25;
+// let seconds = 0;
 let interval;
 let date;
-let timeRemaining = null;
+let timeRemaining = new Date();
 let endTime;
 
 let data = {
@@ -12,12 +12,12 @@ let data = {
 }
 
 self.onmessage = (e) => {
-    if(e.data == 'start'){
+    if(e.data.msg == 'start'){
         date = new Date();
         timeRemaining = new Date();
 
-        date.setMinutes(date.getMinutes() + minutes);
-        date.setSeconds(date.getSeconds() + seconds);
+        date.setMinutes(date.getMinutes() + e.data.min);
+        date.setSeconds(date.getSeconds() + e.data.s);
 
         endTime = date;
         working = true;
@@ -26,7 +26,7 @@ self.onmessage = (e) => {
     }else if(e.data == 'stop'){
         stopTimer();
     }else if(e.data.msg == 'switchMode'){
-        switchMode(e.data.minutes);
+        switchMode(e.data.min);
     }
 }
 
@@ -53,26 +53,27 @@ function startTimer() {
 }
 
 function stopTimer() {
-    clearInterval(interval);
-    minutes = timeRemaining.getMinutes();
-    seconds = timeRemaining.getSeconds();
-    data.working = false;
-
-    self.postMessage(data);
+    if(interval) {
+        clearInterval(interval);
+        minutes = timeRemaining.getMinutes();
+        seconds = timeRemaining.getSeconds();
+        data.working = false;
+    
+        self.postMessage(data);
+    }
 }
 
 function switchMode(min) {
-    clearInterval(interval);
+    if(interval) {
+        clearInterval(interval);
+    }
+
     minutes = min;
     seconds = 0;
     data.working = false;
     
-    try{
-        timeRemaining.setMinutes(min);
-        timeRemaining.setSeconds(0);
-    }catch(error){
-        // pass
-    }
+    timeRemaining.setMinutes(min);
+    timeRemaining.setSeconds(0);
 
     self.postMessage(data);
 }

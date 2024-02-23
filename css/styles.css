@@ -102,11 +102,50 @@ header nav {
     justify-content: center;
 }
 
+.timer-footer {
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+}
+
+.timer-footer p {
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    gap: 2%;
+}
+
+#pomodoro-counter {
+    font-size: 20px;
+    cursor: pointer;
+}
+
 .timer-container button, .message-pop-up button:last-child {
     color: black;
     margin-left: 1%;
     margin-right: 1%;
     font-family: PixelEmulator;
+}
+
+button {
+    border-width: 2px;
+    border-style: solid;
+    border-color: #545454 #000 #000 #545454;
+}
+
+button:active {
+    border-color: #000 #545454 #545454 #000;
+}
+
+.button-pressed {
+    border-width: 2px;
+    border-style: solid;
+    background-color: #43aa8b;
+    border-color: #000 #545454 #545454 #000;
+}
+
+.button-pressed:focus {
+    background-color: #43aa8b;
 }
 
 .message-pop-up button:last-child {
@@ -390,7 +429,7 @@ button:hover {
     background-color: #43aa8b;
 }
 
-.blocked {
+.blocked, .button-pressed {
     pointer-events: none;
     user-select: none;
 }
