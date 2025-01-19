@@ -1,0 +1,22 @@
+[build]
+  publish = "public"
+
+[[redirects]]
+    from="/"
+    to="/en"
+    status=200
+
+[[redirects]]
+    from="/about"
+    to="/en/about"
+    status=200
+
+[[redirects]]
+    from="/privacy"
+    to="/en/privacy"
+    status=200
+
+[[redirects]]
+    from="/terms"
+    to="/en/terms"
+    status=200

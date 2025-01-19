@@ -13,14 +13,14 @@
     <meta property="og:title" content="Pixeldoro | Pomodoro Timer"/>
     <meta property="og:type" content="website"/>
     <meta property="og:url" content="https://pixeldoro.netlify.app"/>
-    <meta property="og:image" content="https://pixeldoro.netlify.app/img/pixeldoro.png"/>
+    <meta property="og:image" content="https://pixeldoro.netlify.app/assets/img/pixeldoro.png"/>
     <meta property="og:description" content="The Pixeldoro is a Pixel Art timer for the use of the Pomodoro Technique, a study method to boost the productivity and tasks management."/>
     <meta property="og:locale" content="en_US"/>
 
     <style>
         @font-face {
             font-family: PixelEmulator;
-            src: url("/css/fonts/pixelemulator.ttf");
+            src: url("/assets/fonts/pixelemulator.ttf");
         }
 
         @font-face {
@@ -50,7 +50,7 @@
     <link rel="stylesheet" href="./css/styles.css" />
     <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
     <link type="text/css" rel="stylesheet" href="./css/materialize.min.css" media="screen,projection" />
-    <link rel="icon" href="./img/pomodoro.png">
+    <link rel="icon" href="/assets/img/pomodoro.png">
     <title>Pixeldoro | Pomodoro Timer Online</title>
 
     <!-- Google tag (gtag.js) -->
@@ -65,15 +65,15 @@
 </head>
 
 <body>
-    <audio id="notification" src="./sounds/notification.wav"></audio>
+    <audio id="notification" src="/assets/sounds/notification.wav"></audio>
 
     <div id="blur">
         <header>
             <hr>
             <!-- Dropdown Structure -->
             <ul id="dropdown1" class="dropdown-content">
-                <li><span class="pt-br"><img src="./img/pt-br.png" alt="pt-br">pt-BR</span></li>
-                <li><span class="en"><img src="./img/en.png" alt="en">en</span></li>
+                <li><span class="pt-br"><img src="/assets/img/pt-br.png" alt="pt-br">pt-BR</span></li>
+                <li><span class="en"><img src="/assets/img/en.png" alt="en">en</span></li>
             </ul>
 
             <nav>
@@ -85,11 +85,11 @@
                         <li><a href="https://www.paypal.com/donate/?hosted_button_id=W525VH33KQ6AE" rel="nofollow" target="_blank">Support me</a></li>
 
                         <!-- Dropdown Trigger -->
-                        <li><a class="dropdown-trigger" href="" data-target="dropdown1"><img src="./img/en.png" alt="pt-br" height="32px" width="32px">en<i class="material-icons right">arrow_drop_down</i></a></li>
+                        <li><a class="dropdown-trigger" href="" data-target="dropdown1"><img src="/assets/img/en.png" alt="pt-br" height="32px" width="32px">en<i class="material-icons right">arrow_drop_down</i></a></li>
                     </ul>
                     <div class="responsive-nav">
                         <a href="#" class="header">
-                            <img src="/img/pomodoro_72x72.png" alt="Pixeldoro-logo" width="48" height="48">
+                            <img src="/assets/img/pomodoro_72x72.png" alt="Pixeldoro-logo" width="48" height="48">
                             <h1>Pixeldoro</h1>
                         </a>
 
@@ -238,15 +238,15 @@
                 Music
                 <p>
                     <audio controls id="lo-fi">
-                        <source src="./sounds/lo-fi.mp3" type="audio/mpeg">
+                        <source src="/assets/sounds/lo-fi.mp3" type="audio/mpeg">
                     </audio>
                 </p>
 
                 Language
                 <p>
                     <ul id="dropdown2" class="dropdown-content">
-                        <li><span class="pt-br"><img src="./img/pt-br.png" alt="pt-br">pt-BR</span></li>
-                        <li><span class="en"><img src="./img/en.png" alt="en">en</span></li>
+                        <li><span class="pt-br"><img src="/assets/img/pt-br.png" alt="pt-br">pt-BR</span></li>
+                        <li><span class="en"><img src="/assets/img/en.png" alt="en">en</span></li>
                     </ul>
                     <a class="btn dropdown-trigger language-settings" href="" data-target="dropdown2">English<i class="material-icons right">arrow_drop_down</i></a>
                 </p>
