@@ -1,0 +1,48 @@
+header {
+  padding: 10px 10px 0 10px;
+}
+header .dropdown-content span {
+  display: flex !important;
+  align-items: center;
+  gap: 10px;
+}
+header .dropdown-content .en {
+  color: #02649E !important;
+}
+header .dropdown-content .pt-br {
+  color: #38B000 !important;
+}
+header nav {
+  background-color: #d90429;
+  box-shadow: none;
+}
+header nav .dropdown-trigger {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+header nav .responsive-nav {
+  display: flex;
+  justify-content: space-between;
+  height: 100%;
+}
+header nav .responsive-nav a:first-child {
+  display: flex;
+  align-items: center;
+  font-size: 2.1rem;
+}
+header nav .responsive-nav img {
+  margin-right: 10px;
+}
+header nav .responsive-nav h1 {
+  font-size: 2.1rem;
+}
+header nav .sidenav-trigger {
+  display: flex;
+  align-self: center;
+  height: 2.5rem !important;
+  font-size: 2.5rem;
+  margin: 0;
+}
+
+/*# sourceMappingURL=sass.css.map */

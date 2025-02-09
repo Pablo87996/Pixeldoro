@@ -1,0 +1,61 @@
+@use '../sass-utils/variables';
+
+header {
+    padding: 10px 10px 0 10px;
+
+    .dropdown-content {
+        span {
+            display: flex !important;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .en {
+            color: #02649E !important;
+        }
+        
+        .pt-br {
+            color: #38B000 !important;
+        }
+    }
+    
+    nav {
+        background-color: variables.$primary-red-color;
+        box-shadow: none;
+
+        .dropdown-trigger {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .responsive-nav {
+            display: flex;
+            justify-content: space-between;
+            height: 100%;
+            
+            a:first-child {
+                display: flex;
+                align-items: center;
+                font-size: 2.1rem;
+            }
+            
+            img {
+                margin-right: 10px;
+            }
+
+            h1 {
+                font-size: 2.1rem;
+            }
+        }
+        
+        .sidenav-trigger {
+            display: flex;
+            align-self: center;
+        
+            height: 2.5rem !important;
+            font-size: 2.5rem;
+            margin: 0;
+        }
+    }
+}
