@@ -520,17 +520,6 @@ hr {
     right: 0;
 }
 
-.page-footer {
-    background-color: #90be6d !important;
-    border-top: 2px solid black;
-}
-
-.footer-copyright {
-    border-top: 2px solid black;
-    display: flex;
-    justify-content: space-around;
-}
-
 .container {
     display: flex;
     justify-content: space-around;

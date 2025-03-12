@@ -45,4 +45,16 @@ header nav .sidenav-trigger {
   margin: 0;
 }
 
+.page-footer {
+  background-color: #90be6d !important;
+  border-top: 2px solid black;
+}
+.page-footer a:hover {
+  color: #ef233c !important;
+}
+
+.footer-copyright {
+  border-top: 2px solid black;
+}
+
 /*# sourceMappingURL=sass.css.map */
