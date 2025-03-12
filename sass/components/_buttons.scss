@@ -1,0 +1,40 @@
+@use '../sass-utils/variables';
+
+%button {
+    cursor: pointer;
+    border: 2px solid;
+    border-color: #545454 #000 #000 #545454;
+    background-color: variables.$pixeldoro-green-light;
+
+    &:hover, &:focus {
+        background-color: variables.$pixeldoro-green-dark;
+    }
+
+    &:active {
+        border-color: #000 #545454 #545454 #000;
+        background-color: variables.$pixeldoro-green-dark;
+    }
+
+    &:focus-visible {
+        background-color: #2ab7a9 !important;
+    }
+}
+
+.button {
+    @extend %button;
+}
+
+.button-icon {
+    @extend %button;
+    padding: 10px;
+    width: min-content;
+    height: 100%;
+    aspect-ratio: 1/1;
+}
+
+.button-pressed {
+    pointer-events: none;
+    user-select: none;
+    border-color: #000 #545454 #545454 #000;
+    background-color: variables.$pixeldoro-green-dark !important;
+}

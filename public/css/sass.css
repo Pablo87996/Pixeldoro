@@ -57,4 +57,35 @@ header nav .sidenav-trigger {
   border-top: 2px solid black;
 }
 
+.button-icon, .button {
+  cursor: pointer;
+  border: 2px solid;
+  border-color: #545454 #000 #000 #545454;
+  background-color: #90be6d;
+}
+.button-icon:hover, .button:hover, .button-icon:focus, .button:focus {
+  background-color: #43aa8b;
+}
+.button-icon:active, .button:active {
+  border-color: #000 #545454 #545454 #000;
+  background-color: #43aa8b;
+}
+.button-icon:focus-visible, .button:focus-visible {
+  background-color: #2ab7a9 !important;
+}
+
+.button-icon {
+  padding: 10px;
+  width: min-content;
+  height: 100%;
+  aspect-ratio: 1/1;
+}
+
+.button-pressed {
+  pointer-events: none;
+  user-select: none;
+  border-color: #000 #545454 #545454 #000;
+  background-color: #43aa8b !important;
+}
+
 /*# sourceMappingURL=sass.css.map */

@@ -98,12 +98,12 @@ buttonStart.onclick = function () {
     }
 
     worker.postMessage(data);
-    buttonStart.classList.add('blocked');
+    buttonStart.classList.add('button-pressed');
 }
 
 buttonStop.onclick = function () {
     worker.postMessage('stop');
-    buttonStart.classList.remove('blocked');
+    buttonStart.classList.remove('button-pressed');
 }
 
 buttonPomodoro.onclick = function () {
@@ -258,7 +258,7 @@ function display(min, s) {
 
 // Switch between Pomodoro, short break and long break.
 function switchMode(option) {
-    buttonStart.classList.remove('blocked');
+    buttonStart.classList.remove('button-pressed');
     document.querySelector('.button-pressed').classList.remove('button-pressed');
 
     switch (option) {

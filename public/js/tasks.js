@@ -113,7 +113,7 @@ function createTagLI(task, ul) {
     var div = document.createElement('div');
 
     var buttonDelete = document.createElement('button');
-    buttonDelete.classList.add('button-action');
+    buttonDelete.classList.add('button-icon');
     buttonDelete.textContent = '❌';
     buttonDelete.onclick = function () {
         var confirmacao = window.confirm('A tarefa será deletada!')
@@ -123,7 +123,7 @@ function createTagLI(task, ul) {
     }
 
     var buttonCheck = document.createElement('button');
-    buttonCheck.classList.add('button-action');
+    buttonCheck.classList.add('button-icon');
     buttonCheck.textContent = '✔️';
     buttonCheck.onclick = function () {
         removeTask(task, toDoList);
