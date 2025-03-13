@@ -76,12 +76,16 @@ main {
   scroll-behavior: smooth;
 }
 
+@font-face {
+  font-family: "PixelEmulator";
+  src: url("/assets/fonts/pixelemulator.ttf");
+}
 body {
   line-height: normal;
 }
 
 body, button, input, audio::-webkit-media-controls-current-time-display {
-  font-family: PixelEmulator !important;
+  font-family: "PixelEmulator" !important;
 }
 
 body, span, input {
