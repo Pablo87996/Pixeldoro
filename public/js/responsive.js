@@ -1,6 +1,4 @@
 const responsiveSettings = document.getElementById('responsive-settings');
-// var blur = document.getElementById('blur');
-// var popUp = document.getElementById('pop-up');
 
 document.addEventListener('DOMContentLoaded', function () {
     var elems = document.querySelectorAll('.sidenav');
