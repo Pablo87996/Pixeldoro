@@ -69,15 +69,11 @@ hr {
     font-size: large;
 }
 
-.subpage {
-    word-wrap: break-word;
-    
-    a {
-        color: #fff !important;
-        text-decoration: underline;
-        &:hover {
-            color: variables.$pixeldoro-green-light !important;
-        }
+.subpage a {
+    color: #fff !important;
+    text-decoration: underline;
+    &:hover {
+        color: variables.$pixeldoro-green-light !important;
     }
 }
 

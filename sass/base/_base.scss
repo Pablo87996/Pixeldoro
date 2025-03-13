@@ -15,14 +15,55 @@ h1 {
     margin: 0 !important;
 }
 
+span {
+    display: inline !important;
+}
+
+main {
+    padding: 0 10px;
+}
+
+.px-0 {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
 #blur {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
 }
 
-main {
-    padding: 0 10px;
+.subpage {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    
+    li, ul {
+        all: revert !important;
+    }
+
+    li {
+        margin: 14px 0 !important;
+    }
+
+    ul {
+        padding-left: 15px !important;
+    }
+
+    ol {
+        padding-left: 25px !important;
+    }
+}
+
+.subpage-content {
+    padding: 3%;
+    grid-column: 2;
+}
+
+@media(orientation:portrait) {
+    .subpage {
+        grid-template-columns: 1fr;
+    }
 }
 
 ::-webkit-scrollbar {

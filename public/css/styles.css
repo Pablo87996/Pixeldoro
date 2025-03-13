@@ -1,48 +1,3 @@
-.settings {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-}
-
-label span {
-    display: inline !important;
-}
-
-.subpage {
-    display: grid;
-    grid-template-columns: 1fr 3fr 1fr;
-}
-
-.subpage li {
-    all: revert !important;
-    margin: 14px 0 !important;
-}
-
-.subpage ul {
-    all: revert !important;
-    padding-left: 15px !important;
-}
-
-.subpage ol {
-    all: revert !important;
-    padding-left: 25px !important;
-}
-
-.subpage-content {
-    padding: 3%;
-    width: 100%;
-    grid-column: 2;
-}
-
-@media(orientation:portrait) {
-    .subpage {
-        display: flex;
-    }
-
-    .subpage-content {
-        padding: 0;
-    }
-}
-
 #input-time input {
     background-color: #43aa8b;
     border: 2px solid black;
@@ -55,10 +10,6 @@ label span {
 }
 
 @media (max-width: 480px) {
-    .settings {
-        grid-template-columns: 1fr;
-    }
-
     .tasks {
         min-height: min-content !important;
     }
