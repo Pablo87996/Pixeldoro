@@ -1,0 +1,39 @@
+@use '../sass-utils/variables';
+
+* {
+    box-sizing: border-box !important;
+}
+
+body {
+    background-color: variables.$pixeldoro-red-dark;
+    min-width: 275px;
+    position: relative;
+    overflow: overlay;
+}
+
+h1 {
+    margin: 0 !important;
+}
+
+#blur {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    padding: 0 10px;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: variables.$pixeldoro-green-light;
+    border: 2px solid #000;
+}
+
+:root {
+    scroll-behavior: smooth;
+}
