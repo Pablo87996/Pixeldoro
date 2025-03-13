@@ -13,45 +13,16 @@
     <meta property="og:title" content="Pixeldoro | Pomodoro Timer"/>
     <meta property="og:type" content="website"/>
     <meta property="og:url" content="https://pixeldoro.netlify.app/pt-br/"/>
-    <meta property="og:image" content="https://pixeldoro.netlify.app/img/pixeldoro.png"/>
+    <meta property="og:image" content="https://pixeldoro.netlify.app/assets/img/pixeldoro.png"/>
     <meta property="og:description" content="O Pixeldoro é um temporizador em Pixel Art para a utilização da Técnica Pomodoro, 
     um método de estudos que visa aumentar a produtividade e melhorar o gerenciamento de tarefas."/>
     <meta property="og:locale" content="pt_BR"/>
 
-    <style>
-        @font-face {
-            font-family: PixelEmulator;
-            src: url("/css/fonts/pixelemulator.ttf");
-        }
-        
-        @font-face {
-            font-family: 'Material Icons';
-            font-style: normal;
-            font-weight: 400;
-            src: url(https://fonts.gstatic.com/s/materialicons/v140/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2) format('woff2');
-        }
-
-        .material-icons {
-            font-family: 'Material Icons';
-            font-weight: normal;
-            font-style: normal;
-            font-size: 24px;
-            line-height: 1;
-            letter-spacing: normal;
-            text-transform: none;
-            display: inline-block;
-            white-space: nowrap;
-            word-wrap: normal;
-            direction: ltr;
-            -webkit-font-smoothing: antialiased;
-        }
-    </style>
-
     <link rel="canonical" href="https://pixeldoro.netlify.app/pt-br/">
-    <link rel="stylesheet" href="../css/styles.css" />
-    <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
+    <link rel="stylesheet" href="../css/sass.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="../css/materialize.min.css" media="screen,projection" />
-    <link rel="icon" href="../img/pomodoro.png">
+    <link rel="icon" href="/assets/img/pomodoro.png">
     <title>Pixeldoro | Pomodoro Timer Online</title>
 
     <!-- Google tag (gtag.js) -->
@@ -66,32 +37,31 @@
 </head>
 
 <body>
-    <audio id="empty" src="../sounds/empty.mp3"></audio>
-    <audio id="notification" src="../sounds/notification.wav"></audio>
+    <audio id="empty" src="/assets/sounds/empty.mp3"></audio>
+    <audio id="notification" src="/assets/sounds/notification.wav"></audio>
 
     <div id="blur">
         <header>
-            <hr>
             <!-- Dropdown Structure -->
             <ul id="dropdown1" class="dropdown-content">
-                <li><span class="pt-br"><img src="../img/pt-br.png" alt="pt-br">pt-BR</span></li>
-                <li><span class="en"><img src="../img/en.png" alt="en">en</span></li>
+                <li><span class="pt-br"><img src="/assets/img/pt-br.png" alt="pt-br">pt-BR</span></li>
+                <li><span class="en"><img src="/assets/img/en.png" alt="en">en</span></li>
             </ul>
 
             <nav>
                 <div class="nav-wrapper">
                     <ul id="nav-mobile" class="right hide-on-med-and-down">
-                        <li><a href="https://pixeldoro.netlify.app/pt-br/sobre" target="_blank">Sobre</a></li>
+                        <li><a href="/pt-br/sobre" target="_blank">Sobre</a></li>
                         <li><a id="versiculo">Versículos</a></li>
                         <li><a id="settings">Configurações</a></li>
                         <li><a href="https://www.paypal.com/donate/?hosted_button_id=W525VH33KQ6AE" rel="nofollow" target="_blank">Apoie-me</a></li>
 
                         <!-- Dropdown Trigger -->
-                        <li><a class="dropdown-trigger" href="" data-target="dropdown1"><img src="../img/pt-br.png" alt="pt-br" height="32px" width="32px">pt-BR<i class="material-icons right">arrow_drop_down</i></a></li>
+                        <li><a class="dropdown-trigger" href="" data-target="dropdown1"><img src="/assets/img/pt-br.png" alt="pt-br" height="32px" width="32px">pt-BR<i class="material-icons right">arrow_drop_down</i></a></li>
                     </ul>
                     <div class="responsive-nav">
-                        <a href="#" class="header">
-                            <img src="/img/pomodoro_72x72.png" alt="Pixeldoro-logo" width="48" height="48">
+                        <a href="#">
+                            <img src="/assets/img/pomodoro_72x72.png" alt="Pixeldoro-logo" width="48" height="48">
                             <h1>Pixeldoro</h1>
                         </a>
 
@@ -99,12 +69,11 @@
                     </div>
                 </div>
             </nav>
-            <hr>
 
             <ul id="slide-out" class="sidenav">
                 <li><a id="responsive-settings"><i class="material-icons">settings</i>Configurações</a></li>
                 <li><a id="responsive-versiculo"><i class="material-icons">book</i>Versículos</a></li>
-                <li><a href="https://pixeldoro.netlify.app/pt-br/sobre" target="_blank"><i class="material-icons">announcement</i>Sobre</a></li>
+                <li><a href="/pt-br/sobre" target="_blank"><i class="material-icons">announcement</i>Sobre</a></li>
                 <li><a href="https://www.paypal.com/donate/?hosted_button_id=W525VH33KQ6AE" rel="nofollow" target="_blank"><i class="material-icons">favorite</i>Apoie-me</a></li>
             </ul>
         </header>
@@ -112,9 +81,9 @@
         <main>
             <div class="timer-container">
                 <p>
-                    <button id="button-pomodoro">Pomodoro</button>
-                    <button id="button-short-break">Pausa curta</button>
-                    <button id="button-long-break">Pausa longa</button>
+                    <button class="button" id="button-pomodoro">Pomodoro</button>
+                    <button class="button" id="button-short-break">Pausa curta</button>
+                    <button class="button" id="button-long-break">Pausa longa</button>
                 </p>
 
                 <div class="timer">
@@ -125,32 +94,28 @@
 
                 <div class="timer-footer">
                     <p>
-                        <button id="button-start">Começar</button>
-                        <button id="button-stop">Pausar</button>
+                        <button class="button" id="button-start">Começar</button>
+                        <button class="button" id="button-stop">Pausar</button>
                     </p>
 
                     <span id="pomodoro-counter" title="Recomeçar a contagem"></span>
                 </div>
             </div>
 
-            <div class="title-tasks">
-                <hr>
+            <div class="to-do-list-title">
                 <h5>Lista de tarefas</h5>
-                <hr>
             </div>
 
-            <div class="tasks">
+            <div class="to-do-list-container">
                 <input type="text" id="input-new-task" placeholder="Adicionar nova tarefa">
 
-                <button id="button-new-task">➕</button>
+                <button class="button-icon" id="button-new-task">➕</button>
 
-                <div class="counter">
+                <div class="counter valign-wrapper">
                     <span>Completas: </span>
                     <span id="completed-tasks">0</span>
                 </div>
-            </div>
 
-            <div id="to-do-list-container">
                 <ul id="to-do-list">
                 </ul>
             </div>
@@ -212,15 +177,13 @@
     </div>
 
     <div class="pop-up" id="pop-up">
-        <hr>
-        <span class="bar">
+        <div class="pop-up-header">
             <h5>Configurações</h5>
-            <button class="button-close" id="button-close">❌</button>
-        </span>
-        <hr>
+            <button class="button-icon" id="button-close">❌</button>
+        </div>
 
-        <div class="settings">
-            <div>
+        <div class="row mb-0">
+            <div class="col s12 xl6">
                 <div id="input-time">
                     Pomodoro
                     <p>
@@ -241,15 +204,15 @@
                 Música
                 <p>
                     <audio controls id="lo-fi">
-                        <source src="../sounds/lo-fi.mp3" type="audio/mpeg">
+                        <source src="/assets/sounds/lo-fi.mp3" type="audio/mpeg">
                     </audio>
                 </p>
 
                 Idioma
                 <p>
                     <ul id="dropdown2" class="dropdown-content">
-                        <li><span class="pt-br"><img src="../img/pt-br.png" alt="pt-br">pt-BR</span></li>
-                        <li><span class="en"><img src="../img/en.png" alt="en">en</span></li>
+                        <li><span class="pt-br"><img src="/assets/img/pt-br.png" alt="pt-br">pt-BR</span></li>
+                        <li><span class="en"><img src="/assets/img/en.png" alt="en">en</span></li>
                     </ul>
                     <a class="btn dropdown-trigger language-settings" href="" data-target="dropdown2">Português - Brasil<i class="material-icons right">arrow_drop_down</i></a>
                 </p>
@@ -263,12 +226,10 @@
     </div>
 
     <div class="pop-up" id="versiculo-pop-up">
-        <hr>
-        <span class="bar">
+        <div class="pop-up-header">
             <h5>Versículo</h5>
-            <button class="button-close" id="button-close-2">❌</button>
-        </span>
-        <hr>
+            <button class="button-icon" id="button-close-2">❌</button>
+        </div>
 
         <p id="area-versiculo-1"></p>
         <p id="area-versiculo-2"></p>

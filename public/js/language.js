@@ -54,7 +54,7 @@ defaultLanguage.forEach((element) => {
 
 function update() {
     if(localStorage.getItem('language') == 'en' && href.includes('pt-br')){
-        link = href.replace('pt-br/'+lastElement, '');
+        link = href.replace(/pt-br\/?/, '');
         window.location.href = link;
     }else if(localStorage.getItem('language') == 'pt-br' && !href.includes('pt-br')){
         if(lastElement == 'index.html'){

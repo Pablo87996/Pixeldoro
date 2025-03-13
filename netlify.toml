@@ -1,0 +1,45 @@
+[build]
+  publish = "public"
+
+[[redirects]]
+    from="/"
+    to="/html/en"
+    status=200
+
+[[redirects]]
+    from="/pt-br"
+    to="/html/pt-br/"
+    status=200
+
+
+[[redirects]]
+    from="/about"
+    to="/html/en/about"
+    status=200
+
+[[redirects]]
+    from="/pt-br/sobre"
+    to="/html/pt-br/sobre"
+    status=200
+
+
+[[redirects]]
+    from="/privacy"
+    to="/html/en/privacy"
+    status=200
+
+[[redirects]]
+    from="/pt-br/privacidade"
+    to="/html/pt-br/privacidade"
+    status=200
+
+
+[[redirects]]
+    from="/terms"
+    to="/html/en/terms"
+    status=200
+
+[[redirects]]
+    from="/pt-br/termos"
+    to="/html/pt-br/termos"
+    status=200

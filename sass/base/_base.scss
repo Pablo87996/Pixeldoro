@@ -1,0 +1,84 @@
+@use '../sass-utils/variables';
+
+* {
+    box-sizing: border-box !important;
+}
+
+body {
+    background-color: variables.$pixeldoro-red-dark;
+    min-width: 275px;
+    position: relative;
+    overflow: overlay;
+}
+
+h1 {
+    margin: 0 !important;
+}
+
+span {
+    display: inline !important;
+}
+
+main {
+    padding: 0 10px;
+}
+
+.mb-0 {
+    margin-bottom: 0 !important;
+}
+
+.px-0 {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+#blur {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+.subpage {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    
+    li, ul {
+        all: revert !important;
+    }
+
+    li {
+        margin: 14px 0 !important;
+    }
+
+    ul {
+        padding-left: 15px !important;
+    }
+
+    ol {
+        padding-left: 25px !important;
+    }
+}
+
+.subpage-content {
+    padding: 3%;
+    grid-column: 2;
+}
+
+@media(orientation:portrait) {
+    .subpage {
+        grid-template-columns: 1fr;
+    }
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: variables.$pixeldoro-green-light;
+    border: 2px solid #000;
+}
+
+:root {
+    scroll-behavior: smooth;
+}

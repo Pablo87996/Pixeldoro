@@ -1,0 +1,95 @@
+@use '../sass-utils/mixins';
+@use '../sass-utils/variables';
+
+@font-face {
+    font-family: "PixelEmulator";
+    src: url("/assets/fonts/pixelemulator.ttf");
+}
+
+body {
+    line-height: normal;
+}
+
+body, button, input, audio::-webkit-media-controls-current-time-display {
+    font-family: "PixelEmulator" !important;
+}
+
+body, span, input {
+    color: #fff !important;
+}
+
+.responsive-nav {
+    h1, a:first-child {
+        font-size: 2.1rem;
+    }
+}
+
+.sidenav-trigger {
+    font-size: 2.5rem;
+}
+
+.dropdown-content {
+    .en {
+        color: #02649e !important;
+    }
+    
+    .pt-br {
+        color: #38b000 !important;
+    }
+}
+
+hr {
+    background-color: #fff;
+    height: 2px !important;
+    border: none;
+    margin: 0;
+}
+
+.timer {
+    font-size: 9.77vw;
+}
+
+@media (max-width: 480px) {
+    .timer {
+        font-size: 16vw;
+    }
+}
+
+#pomodoro-counter {
+    font-size: 20px;
+}
+
+.to-do-list-title {
+    @include mixins.border-top-down(3px);
+    text-align: center;
+    
+    h5 {
+        margin: 20px;
+    }
+}
+
+#input-new-task::placeholder {
+    color: #ffffff44;
+}
+
+.contacts ion-icon {
+    font-size: large;
+}
+
+.subpage a {
+    color: #fff !important;
+    text-decoration: underline;
+    &:hover {
+        color: variables.$pixeldoro-green-light !important;
+    }
+}
+
+.subpage-content {
+    h1 {
+        font-size: 3.0rem !important;
+    }
+
+    div:first-of-type {
+        margin-bottom: 5%;
+    }
+}

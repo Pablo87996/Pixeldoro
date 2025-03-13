@@ -5,7 +5,6 @@ const buttonStop = document.getElementById("button-stop");
 const buttonPomodoro = document.getElementById("button-pomodoro");
 const buttonShortBreak = document.getElementById("button-short-break");
 const buttonLongBreak = document.getElementById("button-long-break");
-const buttonSettings = document.getElementById('button-settings');
 const settings = document.getElementById('settings');
 const blur = document.getElementById('blur');
 const popUp = document.getElementById('pop-up');
@@ -14,13 +13,11 @@ const pomodoroTime = document.getElementById('pomodoro-time');
 const shortBreakTime = document.getElementById('short-break-time');
 const longBreakTime = document.getElementById('long-break-time');
 const notification = document.getElementById('notification');
-const lofi = document.getElementById('lo-fi');
 const pomodoroCounter = document.querySelector('#pomodoro-counter');
 let mode = 0;
 let pomodoros = 0;
 let timerWorking = false;
 let tmpTimes = null;
-let timeRemaining = null;
 let minutes = 25;
 let seconds = 0;
 let config;
@@ -98,12 +95,12 @@ buttonStart.onclick = function () {
     }
 
     worker.postMessage(data);
-    buttonStart.classList.add('blocked');
+    buttonStart.classList.add('button-pressed');
 }
 
 buttonStop.onclick = function () {
     worker.postMessage('stop');
-    buttonStart.classList.remove('blocked');
+    buttonStart.classList.remove('button-pressed');
 }
 
 buttonPomodoro.onclick = function () {
@@ -258,7 +255,7 @@ function display(min, s) {
 
 // Switch between Pomodoro, short break and long break.
 function switchMode(option) {
-    buttonStart.classList.remove('blocked');
+    buttonStart.classList.remove('button-pressed');
     document.querySelector('.button-pressed').classList.remove('button-pressed');
 
     switch (option) {

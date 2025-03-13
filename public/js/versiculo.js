@@ -1,11 +1,9 @@
-var buttonBible = document.getElementById('button-bible');
 const responsiveVersiculo = document.getElementById('responsive-versiculo');
 const versiculoPopUp = document.getElementById('versiculo-pop-up');
 const versiculo = document.getElementById('versiculo');
 var buttonClose2 = document.getElementById('button-close-2');
 var areaVersiculo1 = document.getElementById('area-versiculo-1');
 var areaVersiculo2 = document.getElementById('area-versiculo-2');
-var randomNumber = 0;
 let verseLoaded = 0;
 
 versiculo.onclick = function () {
