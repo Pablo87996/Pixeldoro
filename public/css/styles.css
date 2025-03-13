@@ -9,50 +9,6 @@
     padding-top: 25px;
 }
 
-@media (max-width: 480px) {
-    .tasks {
-        min-height: min-content !important;
-    }
-}
-
-.tasks {
-    margin-top: 2%;
-    position: relative;
-
-    display: grid;
-    grid-template-columns: 8fr 1fr 8fr;
-}
-
-.add-tasks {
-    display: flex;
-    margin-bottom: 3%;
-}
-
-.counter {
-    background-color: #90be6d;
-    border: 2px solid black;
-    padding: 10px;
-    outline: none;
-    height: min-content;
-}
-
-#input-new-task {
-    height: auto;
-    background-color: #90be6d;
-    border: 2px solid black;
-    padding: 10px;
-    width: 100%;
-}
-
-#to-do-list-container {
-    padding: 0;
-    padding-bottom: 30px;
-
-    display: grid;
-    grid-template-columns: 8fr 1fr 8fr;
-    min-height: 100vh;
-}
-
 #to-do-list li {
     background-color: #90be6d;
     width: 100%;
@@ -64,12 +20,6 @@
     margin-top: 20px;
     word-break: break-word;
     align-items: center;
-}
-
-@media (max-width: 480px) {
-    #to-do-list-container {
-        grid-template-columns: 1fr;
-    }
 }
 
 audio::-webkit-media-controls-enclosure {

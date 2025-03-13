@@ -119,12 +119,12 @@ hr {
   font-size: 20px;
 }
 
-.title-tasks {
+.to-do-list-title {
   border-top: 3px solid #fff;
   border-bottom: 3px solid #fff;
   text-align: center;
 }
-.title-tasks h5 {
+.to-do-list-title h5 {
   margin: 20px;
 }
 
@@ -242,6 +242,47 @@ header .dropdown-trigger {
   cursor: pointer;
 }
 
+.to-do-list-container {
+  min-height: 100vh;
+  padding-bottom: 30px;
+  margin-top: 2%;
+  display: grid;
+  grid-template-columns: 8fr 1fr 8fr;
+  grid-template-rows: min-content min-content;
+  gap: 5px;
+}
+
+#button-new-task {
+  justify-self: center;
+}
+
+#input-new-task {
+  padding: 10px;
+  margin-bottom: 0;
+  box-shadow: none;
+  border: 2px solid #000;
+  background-color: #90be6d;
+}
+
+.counter {
+  gap: 11px;
+  outline: none;
+  padding: 10px;
+  border: 2px solid black;
+  background-color: #90be6d;
+}
+
+@media (max-width: 480px) {
+  .to-do-list-container {
+    grid-template-columns: 1fr auto;
+  }
+  .to-do-list-container ul {
+    grid-column: span 2;
+  }
+  .counter {
+    grid-column: span 2;
+  }
+}
 .button-icon, .button {
   cursor: pointer;
   border: 2px solid;

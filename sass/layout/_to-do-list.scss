@@ -1,0 +1,45 @@
+@use '../sass-utils/variables';
+
+.to-do-list-container {
+    min-height: 100vh;
+    padding-bottom: 30px;
+    margin-top: 2%;
+    display: grid;
+    grid-template-columns: 8fr 1fr 8fr;
+    grid-template-rows: min-content min-content;
+    gap: 5px;
+}
+
+#button-new-task {
+    justify-self: center;
+}
+
+#input-new-task {
+    padding: 10px;
+    margin-bottom: 0;
+    box-shadow: none;
+    border: 2px solid #000;
+    background-color: variables.$pixeldoro-green-light;
+}
+
+.counter {
+    gap: 11px;
+    outline: none;
+    padding: 10px;
+    border: 2px solid black;
+    background-color: variables.$pixeldoro-green-light;
+}
+
+@media (max-width: 480px) {
+    .to-do-list-container {
+        grid-template-columns: 1fr auto;
+
+        ul {
+            grid-column: span 2;
+        }
+    }
+
+    .counter {
+        grid-column: span 2;
+    }
+}

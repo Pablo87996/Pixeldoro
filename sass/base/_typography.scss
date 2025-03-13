@@ -54,7 +54,7 @@ hr {
     font-size: 20px;
 }
 
-.title-tasks {
+.to-do-list-title {
     @include mixins.border-top-down(3px);
     text-align: center;
     
