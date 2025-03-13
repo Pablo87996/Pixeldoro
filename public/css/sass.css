@@ -21,6 +21,10 @@ main {
   padding: 0 10px;
 }
 
+.mb-0 {
+  margin-bottom: 0 !important;
+}
+
 .px-0 {
   padding-left: 0 !important;
   padding-right: 0 !important;
@@ -282,6 +286,19 @@ header .dropdown-trigger {
     grid-column: span 2;
   }
 }
+audio, audio::-webkit-media-controls-enclosure {
+  background-color: #43aa8b;
+}
+
+audio::-webkit-media-controls-time-remaining-display {
+  display: none;
+}
+
+audio {
+  width: 100%;
+  border: 2px solid black;
+}
+
 .button-icon, .button {
   cursor: pointer;
   border: 2px solid;
