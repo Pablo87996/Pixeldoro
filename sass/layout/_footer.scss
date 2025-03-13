@@ -9,6 +9,16 @@
     }
 }
 
+.contacts a {
+    display: inline-flex;
+    gap: 5px;
+}
+
 .footer-copyright {
     border-top: 2px solid black;
+
+    .container {
+        display: flex;
+        justify-content: space-around;
+    }
 }

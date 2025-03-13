@@ -1,0 +1,27 @@
+@use '../sass-utils/variables';
+
+%dropdown-trigger {
+    display: flex !important;
+    align-items: center;
+}
+
+.dropdown-trigger {
+    @extend %dropdown-trigger;
+}
+
+.language-settings {
+    @extend %dropdown-trigger;
+
+    background-color: variables.$pixeldoro-green-dark !important;
+    border: 2px solid #000 !important;
+    box-shadow: none !important;
+    width: 100%;
+
+    justify-content: space-between;
+}
+
+.dropdown-content span {
+    display: flex !important;
+    align-items: center;
+    gap: 10px;
+}

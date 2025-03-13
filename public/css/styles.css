@@ -3,16 +3,6 @@
     grid-template-columns: 1fr 1fr;
 }
 
-.language-settings {
-    background-color: #43aa8b !important;
-    border: 2px solid black !important;
-    box-shadow: none !important;
-    width: 100%;
-
-    display: flex !important;
-    justify-content: space-between;
-}
-
 label span {
     display: inline !important;
 }
@@ -129,16 +119,6 @@ label span {
     #to-do-list-container {
         grid-template-columns: 1fr;
     }
-}
-
-.container {
-    display: flex;
-    justify-content: space-around;
-}
-
-.contacts a {
-    display: inline-flex;
-    gap: 5px;
 }
 
 audio::-webkit-media-controls-enclosure {
