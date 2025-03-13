@@ -1,0 +1,19 @@
+@use '../sass-utils/variables';
+
+.task {
+    padding: 12.5px;
+    margin-top: 20px;
+    word-break: break-word;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    border: 2px solid black;
+    background-color: #90be6d;
+}
+
+.task-buttons-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}

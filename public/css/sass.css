@@ -217,7 +217,9 @@ header .dropdown-trigger {
 .timer-container p {
   display: flex;
   justify-content: center;
-  gap: 2%;
+}
+.timer-container button {
+  margin: 0 1%;
 }
 
 @media (orientation: portrait) {
@@ -233,9 +235,6 @@ header .dropdown-trigger {
 .timer-footer p {
   margin-left: auto;
   margin-right: auto;
-}
-.timer-footer button {
-  margin: 0 1%;
 }
 
 #pomodoro-counter {
@@ -390,6 +389,23 @@ header .dropdown-trigger {
     width: 100%;
     height: 100%;
   }
+}
+.task {
+  padding: 12.5px;
+  margin-top: 20px;
+  word-break: break-word;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  border: 2px solid black;
+  background-color: #90be6d;
+}
+
+.task-buttons-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 /*# sourceMappingURL=sass.css.map */
