@@ -120,6 +120,8 @@ hr {
 }
 
 .title-tasks {
+  border-top: 3px solid #fff;
+  border-bottom: 3px solid #fff;
   text-align: center;
 }
 .title-tasks h5 {
@@ -153,6 +155,8 @@ header {
   padding: 10px 10px 0 10px;
 }
 header nav {
+  border-top: 2px solid #fff;
+  border-bottom: 2px solid #fff;
   background-color: #d90429;
   box-shadow: none;
 }
@@ -307,11 +311,11 @@ header .dropdown-trigger {
 }
 
 .pop-up-header {
+  border-top: 2px solid #fff;
+  border-bottom: 2px solid #fff;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-top: 2px solid #fff;
-  border-bottom: 2px solid #fff;
   padding: 5px 0;
 }
 .pop-up-header h5 {

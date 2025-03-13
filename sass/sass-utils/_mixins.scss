@@ -1,0 +1,4 @@
+@mixin border-top-down($width) {
+    border-top: $width solid #fff;
+    border-bottom: $width solid #fff;
+}

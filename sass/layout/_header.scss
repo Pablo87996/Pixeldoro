@@ -1,9 +1,11 @@
+@use '../sass-utils/mixins';
 @use '../sass-utils/variables';
 
 header {
     padding: 10px 10px 0 10px;
-
+    
     nav {
+        @include mixins.border-top-down(2px);
         background-color: variables.$pixeldoro-red-dark;
         box-shadow: none;
     }
