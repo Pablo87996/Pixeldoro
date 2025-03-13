@@ -1,12 +1,12 @@
 @use '../sass-utils/variables';
 
 .page-footer {
+    background-color: variables.$pixeldoro-green-light !important;
+    border-top: 2px solid black;
+    
     a:hover {
         color: variables.$pixeldoro-red-light !important;
     }
-
-    background-color: variables.$pixeldoro-green-light !important;
-    border-top: 2px solid black;
 }
 
 .footer-copyright {

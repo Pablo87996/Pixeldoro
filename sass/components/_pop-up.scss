@@ -20,16 +20,16 @@
 }
 
 .pop-up-header {
-    h5 {
-        margin: 0;
-    }
-
     display: flex;
     justify-content: space-between;
     align-items: center;
     border-top: 2px solid #fff;
     border-bottom: 2px solid #fff;
     padding: 5px 0;
+    
+    h5 {
+        margin: 0;
+    }
 }
 
 #blur.active {

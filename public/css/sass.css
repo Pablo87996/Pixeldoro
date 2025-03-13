@@ -1,48 +1,119 @@
+body {
+  line-height: normal;
+}
+
+body, button, input, audio::-webkit-media-controls-current-time-display {
+  font-family: PixelEmulator !important;
+}
+
+body, span, input {
+  color: #fff !important;
+}
+
+.responsive-nav h1, .responsive-nav a:first-child {
+  font-size: 2.1rem;
+}
+
+.sidenav-trigger {
+  font-size: 2.5rem;
+}
+
+.dropdown-content .en {
+  color: #02649e !important;
+}
+.dropdown-content .pt-br {
+  color: #38b000 !important;
+}
+
+hr {
+  background-color: #fff;
+  height: 2px !important;
+  border: none;
+  margin: 0;
+}
+
+.timer {
+  font-size: 9.77vw;
+}
+
+@media (max-width: 480px) {
+  .timer {
+    font-size: 16vw;
+  }
+}
+#pomodoro-counter {
+  font-size: 20px;
+}
+
+.title-tasks {
+  text-align: center;
+}
+.title-tasks h5 {
+  margin: 20px;
+}
+
+#input-new-task::placeholder {
+  color: rgba(255, 255, 255, 0.2666666667);
+}
+
+.contacts ion-icon {
+  font-size: large;
+}
+
+.subpage {
+  word-wrap: break-word;
+}
+.subpage a {
+  color: #fff !important;
+  text-decoration: underline;
+}
+.subpage a:hover {
+  color: #90be6d !important;
+}
+
+.subpage-content h1 {
+  font-size: 3rem !important;
+}
+.subpage-content div:first-of-type {
+  margin-bottom: 5%;
+}
+
 header {
   padding: 10px 10px 0 10px;
+}
+header nav {
+  background-color: #d90429;
+  box-shadow: none;
+}
+header .dropdown-trigger {
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 header .dropdown-content span {
   display: flex !important;
   align-items: center;
   gap: 10px;
 }
-header .dropdown-content .en {
-  color: #02649E !important;
-}
-header .dropdown-content .pt-br {
-  color: #38B000 !important;
-}
-header nav {
-  background-color: #d90429;
-  box-shadow: none;
-}
-header nav .dropdown-trigger {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
-header nav .responsive-nav {
+
+.responsive-nav {
   display: flex;
   justify-content: space-between;
   height: 100%;
 }
-header nav .responsive-nav a:first-child {
+.responsive-nav a:first-child {
   display: flex;
   align-items: center;
-  font-size: 2.1rem;
 }
-header nav .responsive-nav img {
+.responsive-nav img {
   margin-right: 10px;
 }
-header nav .responsive-nav h1 {
-  font-size: 2.1rem;
-}
-header nav .sidenav-trigger {
+
+.sidenav-trigger {
   display: flex;
   align-self: center;
   height: 2.5rem !important;
-  font-size: 2.5rem;
-  margin: 0;
+  margin: 0 !important;
 }
 
 .page-footer {
