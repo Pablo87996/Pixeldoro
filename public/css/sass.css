@@ -166,6 +166,43 @@ header .dropdown-content span {
   border-top: 2px solid black;
 }
 
+.timer-container {
+  width: 60%;
+  margin: 5% auto;
+  text-align: center;
+  background-color: #ef233c;
+  border: 5px solid #000;
+  display: flex;
+  flex-direction: column;
+}
+.timer-container p {
+  display: flex;
+  justify-content: center;
+  gap: 2%;
+}
+
+@media (orientation: portrait) {
+  .timer-container {
+    width: 98%;
+  }
+}
+.timer-footer {
+  display: flex;
+  align-items: center;
+  padding: 0 15px;
+}
+.timer-footer p {
+  margin-left: auto;
+  margin-right: auto;
+}
+.timer-footer button {
+  margin: 0 1%;
+}
+
+#pomodoro-counter {
+  cursor: pointer;
+}
+
 .button-icon, .button {
   cursor: pointer;
   border: 2px solid;
