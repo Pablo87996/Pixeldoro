@@ -333,6 +333,21 @@ header .dropdown-trigger {
   gap: 10px;
 }
 
+#input-time input, #input-new-task {
+  padding: 10px;
+  box-shadow: none;
+  border: 2px solid #000;
+}
+
+#input-new-task {
+  margin-bottom: 0;
+  background-color: #90be6d;
+}
+
+#input-time input {
+  background-color: #43aa8b;
+}
+
 .pop-up {
   position: fixed;
   top: 40%;
@@ -358,6 +373,7 @@ header .dropdown-trigger {
   justify-content: space-between;
   align-items: center;
   padding: 5px 0;
+  margin-bottom: 25px;
 }
 .pop-up-header h5 {
   margin: 0;

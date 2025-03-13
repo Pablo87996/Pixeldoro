@@ -1,0 +1,18 @@
+@use '../sass-utils/variables';
+
+%input {
+    padding: 10px;
+    box-shadow: none;
+    border: 2px solid #000;
+}
+
+#input-new-task {
+    @extend %input;
+    margin-bottom: 0;
+    background-color: variables.$pixeldoro-green-light;
+}
+
+#input-time input {
+    @extend %input;
+    background-color: variables.$pixeldoro-green-dark;
+}
