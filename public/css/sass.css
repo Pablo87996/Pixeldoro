@@ -88,4 +88,47 @@ header nav .sidenav-trigger {
   background-color: #43aa8b !important;
 }
 
+.pop-up {
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%;
+  padding: 40px;
+  box-shadow: 0 2px 10px black;
+  background-color: #90be6d;
+  visibility: hidden;
+  opacity: 0;
+}
+.pop-up.active {
+  visibility: visible;
+  opacity: 1;
+  top: 50%;
+}
+
+.pop-up-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+  padding: 5px 0;
+}
+.pop-up-header h5 {
+  margin: 0;
+}
+
+#blur.active {
+  filter: blur(10px);
+  pointer-events: none;
+  user-select: none;
+}
+
+@media (max-width: 480px) {
+  .pop-up {
+    width: 100%;
+    height: 100%;
+  }
+}
+
 /*# sourceMappingURL=sass.css.map */

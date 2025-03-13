@@ -74,31 +74,6 @@ main {
     font-family: PixelEmulator;
 }
 
-#blur.active {
-    filter: blur(10px);
-    pointer-events: none;
-    user-select: none;
-}
-
-.pop-up {
-    position: fixed;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 60%;
-    padding: 40px;
-    box-shadow: 0 2px 10px black;
-    background-color: #90be6d;
-    visibility: hidden;
-    opacity: 0;
-}
-
-.pop-up.active {
-    visibility: visible;
-    opacity: 1;
-    top: 50%;
-}
-
 .settings {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -312,11 +287,6 @@ hr {
     padding-left: 6px;
 }
 
-.bar {
-    display: flex;
-    justify-content: space-between;
-}
-
 #input-time input {
     font-family: PixelEmulator;
     background-color: #43aa8b;
@@ -338,11 +308,6 @@ hr {
 }
 
 @media (max-width: 480px) {
-    .pop-up {
-        width: 100%;
-        height: 100%;
-    }
-
     .timer {
         font-size: 16vw;
     }
